@@ -1,0 +1,45 @@
+{
+  "name": "@parsekonlepeu/picker",
+  "private": false,
+  "version": "0.7.0",
+  "description": "picker date google like",
+  "author": {
+    "name": "Nicolas Angeon",
+    "email": "parsekonlepeu@gmail.com"
+  },
+  "main": "./src/index.tsx",
+  "files": ["./src/**/*"],
+  "directories": {},
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rimraf ./build",
+    "build": "pnpm run clean && cross-env NODE_ENV=production babel ./src --extensions .js,.ts,.tsx --config-file ../../babel.config.json --out-dir build --copy-files && tsc "
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@parsekonlepeu/sharedutils": "workspace:*",
+    "@date-io/luxon": "^2.16.1",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.6",
+    "@reduxjs/toolkit": "^1.9.0",
+    "lodash": "^4.17.21",
+    "luxon": "^3.0.3",
+    "react-redux": "^8.0.5"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@reduxjs/toolkit": "^1.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.191",
+    "core-js": "^3.29.0"
+  }
+}

@@ -2,6 +2,7 @@
   "name": "@parsekonlepeu/sharedutils",
   "version": "1.0.0",
   "description": "",
+  "private": false,
   "main": "index.ts",
   "sideEffects": false,
   "scripts": {

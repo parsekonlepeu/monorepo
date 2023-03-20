@@ -1,6 +1,6 @@
 import { getDates } from "./getDates";
 import { random } from "lodash";
-import type { FirstDay } from "@parsekonlepeu/picker";
+import { FirstDay } from "./typesPickerDiary";
 
 const rand_month = random(1, 12);
 

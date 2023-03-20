@@ -16,7 +16,8 @@
   },
   "scripts": {
     "clean": "rimraf ./build",
-    "build": "pnpm run clean && cross-env NODE_ENV=production babel ./src --extensions .js,.ts,.tsx --config-file ../../babel.config.json --out-dir build --copy-files && tsc "
+    "build": "pnpm run clean && cross-env NODE_ENV=production babel ./src --extensions .js,.ts,.tsx --config-file ../../babel.config.json --out-dir build --copy-files && tsc ",
+    "tsc": "pnpm run clean && tsc"
   },
   "sideEffects": false,
   "dependencies": {

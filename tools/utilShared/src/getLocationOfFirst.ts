@@ -1,5 +1,5 @@
 import { DateTime, WeekdayNumbers } from "luxon";
-import { FirstDay } from "../../packages/picker/src/types";
+import { FirstDay } from "./typesPickerDiary";
 
 export const getLocationOfFirst = (
   firstDay: FirstDay,

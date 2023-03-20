@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { FirstDay } from "../../packages/picker/src/types";
+import { FirstDay } from "./typesPickerDiary";
 import { getLocationOfFirst } from "./getLocationOfFirst";
 
 export const getDates = (

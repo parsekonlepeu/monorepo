@@ -5,11 +5,17 @@
   "main": "index.ts",
   "sideEffects": false,
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "clean": "rimraf ./dist",
+    "build:esm": "node ../../script/build.mjs esm",
+    "build:cjs": "node ../../script/build.mjs cjs",
+    "build:types": "tsc",
+    "build": "pnpm clean && pnpm build:esm && pnpm build:cjs && pnpm build:types",
+    "copyFiles": "node ../../script/copyFiles.mjs",
+    "publish": "pnpm publish dist"
   },
   "dependencies": {
     "@date-io/luxon": "^2.16.1",
-    "@parsekonlepeu/picker": "workspace:*",
     "luxon": "^3.0.3",
     "uuid": "^9.0.0",
     "react": "^18.2.0"

@@ -6,6 +6,7 @@ import { WithPopper } from "./WithPopper";
 import { DatepickerProps, MultipleDates, Period, SelectedDate } from "../types";
 import { usePickerSelector } from "../store/hooksTypedRedux";
 import { ContextOption } from "../context/ContextOption";
+// @ts-ignore
 import { getDates } from "@parsekonlepeu/sharedutils";
 import { getDataDisplayPeriod } from "../utils/getDataDisplayPeriod";
 import { getDayPicker } from "../utils/getDayPicker";
@@ -103,8 +104,15 @@ export const MainDatePicker: FC = () => {
         ]}
       >
         {days.map((day, index) => (
-          <WithPopper textDisplay={day[1]} top="20px" key={index.toString()}>
-            <Day day={day} caseSize={caseSize} />
+          <WithPopper
+            textDisplay={day[1]}
+            top="20px"
+            key={index.toString()}
+          >
+            <Day
+              day={day}
+              caseSize={caseSize}
+            />
           </WithPopper>
         ))}
       </div>

@@ -43,7 +43,6 @@ async function run() {
     const existReadMe = pathExists(path.resolve(packagePath, "./README.md"));
     await Promise.all(
       [
-        // use enhanced readme from workspace root for `@mui/material`
         existReadMe
           ? path.resolve(monoRepoDirectoryPath, "README.md")
           : "./README.md",
@@ -53,7 +52,6 @@ async function run() {
     );
 
     const newPkgJson = await changePkgJson(packagePath);
-    console.log("newPkgJson", newPkgJson);
 
     const targetPath = path.resolve(buildPath, "./package.json");
 

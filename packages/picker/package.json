@@ -15,9 +15,14 @@
     "access": "public"
   },
   "scripts": {
-    "clean": "rimraf ./build",
-    "build": "pnpm run clean && cross-env NODE_ENV=production babel ./src --extensions .js,.ts,.tsx --config-file ../../babel.config.json --out-dir build --copy-files && tsc ",
-    "tsc": "pnpm run clean && tsc"
+    "test": "jest",
+    "clean": "rimraf ./dist",
+    "build:esm": "node ../../script/build.mjs esm",
+    "build:cjs": "node ../../script/build.mjs cjs",
+    "build:types": "tsc",
+    "build": "pnpm clean && pnpm build:esm && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
+    "copyFiles": "node ../../script/copyFiles.mjs",
+    "publish": "pnpm publish --access public dist"
   },
   "sideEffects": false,
   "dependencies": {

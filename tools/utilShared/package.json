@@ -11,7 +11,7 @@
     "build:esm": "node ../../script/build.mjs esm",
     "build:cjs": "node ../../script/build.mjs cjs",
     "build:types": "tsc",
-    "build": "pnpm clean && pnpm build:esm && pnpm build:cjs && pnpm build:types",
+    "build": "pnpm clean && pnpm build:esm && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
     "copyFiles": "node ../../script/copyFiles.mjs",
     "publish": "pnpm publish --access public dist"
   },

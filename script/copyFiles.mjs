@@ -23,7 +23,8 @@ async function includeFileInBuild(file) {
 const changePkgJson = async (directoryPackage) => {
   const packageJsonPath = path.resolve(directoryPackage, "package.json");
   const pkgJSon = await fse.readFile(packageJsonPath);
-  const { scripts, devDependencies, ...packageDataOther } = JSON.parse(pkgJSon);
+  const { scripts, devDependencies, files, ...packageDataOther } =
+    JSON.parse(pkgJSon);
   const newPkgJson = {
     ...packageDataOther,
     private: false,

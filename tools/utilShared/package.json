@@ -18,11 +18,13 @@
   "dependencies": {
     "@date-io/luxon": "^2.16.1",
     "luxon": "^3.0.3",
-    "uuid": "^9.0.0",
+    "uuid": "^9.0.0"
+  },
+  "peerDependencies": {
     "react": "^18.2.0"
   },
   "publishConfig": {
-      "directory": "dist"
+    "directory": "dist"
   },
   "keywords": [],
   "author": "",

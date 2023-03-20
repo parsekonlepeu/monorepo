@@ -13,11 +13,14 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "emitDeclarationOnly": true,
-    "composite": true,
-    "declaration": true,
+    "noEmit": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react"
+    "jsxImportSource": "@emotion/react",
+    "paths": {
+      "@parsekonlepeu/picker": ["./packages/picker/src"],
+      "@parsekonlepeu/diary": ["./packages/diary/src"],
+      "@parsekonlepeu/sharedutils": ["./tools/utilShared/src"],
+    }
   },
   "exclude": ["node_modules", "**/build"]
 }

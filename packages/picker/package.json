@@ -8,8 +8,6 @@
     "email": "parsekonlepeu@gmail.com"
   },
   "main": "./src/index.tsx",
-  "files": ["./src/**/*"],
-  "directories": {},
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -26,17 +24,12 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@parsekonlepeu/sharedutils": "workspace:*",
     "@date-io/luxon": "^2.16.1",
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "@mui/icons-material": "^5.10.6",
-    "@reduxjs/toolkit": "^1.9.0",
     "lodash": "^4.17.21",
-    "luxon": "^3.0.3",
-    "react-redux": "^8.0.5"
+    "luxon": "^3.0.3"
   },
   "peerDependencies": {
+    "@parsekonlepeu/sharedutils": "workspace:*",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@reduxjs/toolkit": "^1.9.0",

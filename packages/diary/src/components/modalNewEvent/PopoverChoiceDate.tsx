@@ -21,9 +21,9 @@ export const PopoverChoiceDate: React.FC<PopoverChoiceDateProps> = ({
   handleChange,
   selectedDate,
 }) => {
-  const onChange: OnChangeDatePicker = React.useCallback((data) => {
+  const onChange: OnChangeDatePicker = React.useCallback((e, data) => {
     onClose();
-    handleChange(data);
+    handleChange(e, data);
   }, []);
 
   return (

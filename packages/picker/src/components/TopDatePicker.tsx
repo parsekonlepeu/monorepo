@@ -1,6 +1,4 @@
 import { FC, useCallback, useContext } from "react";
-// import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
-// import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import { DateTime } from "luxon";
 import { WithPopper } from "./WithPopper";
 import { DatepickerProps } from "../types";

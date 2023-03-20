@@ -17,7 +17,7 @@
     "clean": "rimraf ./dist",
     "build:esm": "node ../../script/build.mjs esm",
     "build:cjs": "node ../../script/build.mjs cjs",
-    "build:types": "tsc",
+    "build:types": "tsc -b tsconfig.build.json",
     "build": "pnpm clean && pnpm build:esm && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
     "copyFiles": "node ../../script/copyFiles.mjs",
     "publish": "pnpm publish --access public dist"
@@ -25,17 +25,11 @@
   "sideEffects": false,
   "dependencies": {
     "@date-io/luxon": "^2.16.1",
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "@mui/icons-material": "^5.10.6",
-    "@mui/material": "^5.10.5",
     "@parsekonlepeu/picker": "workspace:*",
     "@parsekonlepeu/sharedutils": "workspace:*",
-    "@reduxjs/toolkit": "^1.9.0",
     "luxon": "^3.0.3",
     "react-color": "^2.19.3",
     "react-hook-form": "^7.39.7",
-    "react-redux": "^8.0.5",
     "react-select": "^5.4.0",
     "react-transition-group": "^4.4.5",
     "react-virtualized": "^9.22.3",
@@ -44,13 +38,12 @@
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.4",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.10.5",
     "@emotion/styled": "^11.10.4",
     "@reduxjs/toolkit": "^1.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5"
-  },
-  "devDependencies": {
-    "@types/uuid": "^9.0.0"
   }
 }

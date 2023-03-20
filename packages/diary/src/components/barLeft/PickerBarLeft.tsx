@@ -10,7 +10,8 @@ import {
   changeMultipleDatesInitPicker,
   changeSelectedDateDiary,
 } from "../../store/slices/generalSlice";
-import { DatePicker, OnChangeDatePicker } from "@parsekonlepeu/picker";
+import { DatePicker } from "@parsekonlepeu/picker";
+import type { OnChangeDatePicker } from "@parsekonlepeu/picker";
 import { getDisplayModeFromMultipleDate } from "../../utils/functions/getDisplayModeFromMultipleDate";
 
 export const PickerBarLeft: React.FC = () => {

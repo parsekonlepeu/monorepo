@@ -7,7 +7,12 @@
     "name": "Nicolas Angeon",
     "email": "parsekonlepeu@gmail.com"
   },
-  "main": "./src/index.tsx",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -18,9 +23,9 @@
     "build:esm": "node ../../script/build.mjs esm",
     "build:cjs": "node ../../script/build.mjs cjs",
     "build:types": "tsc -b tsconfig.build.json",
-    "build": "pnpm clean && pnpm build:esm && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
+    "build": "pnpm clean && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
     "copyFiles": "node ../../script/copyFiles.mjs",
-    "publish": "pnpm publish --access public dist"
+    "publish": "pnpm publish --no-git-checks true --access public dist"
   },
   "sideEffects": false,
   "dependencies": {

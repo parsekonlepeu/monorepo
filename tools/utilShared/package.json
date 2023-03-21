@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "private": false,
-  "main": "index.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "test": "jest",
     "clean": "rimraf ./dist",
     "build:esm": "node ../../script/build.mjs esm",
     "build:cjs": "node ../../script/build.mjs cjs",
-    "build:types": "tsc",
-    "build": "pnpm clean && pnpm build:esm && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
+    "build:types": "tsc -b ./tsconfig.build.json",
+    "build": "pnpm clean && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
     "copyFiles": "node ../../script/copyFiles.mjs",
     "publish": "pnpm publish --access public dist"
   },

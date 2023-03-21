@@ -1,3 +1,4 @@
+const path = require("path");
 module.exports = {
   stories: [
     "../stories/**/*.stories.mdx",
@@ -12,6 +13,15 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
+  // webpackFinal: async (config, { configType }) => {
+  //   config.resolve.alias = {
+  //     ...config.resolve.alias,
+  //     "@parsekonlepeu/picker": "../../../packages/picker/src/index",
+  //     "@parsekonlepeu/diary": "../../../packages/diary/src/index",
+  //     "@parsekonlepeu/sharedutils": "../../utilShared/src/index",
+  //   };
+  //   return config;
+  // },
   babel: async (options) => ({
     ...options,
     presets: [

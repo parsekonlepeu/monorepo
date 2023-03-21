@@ -52,16 +52,16 @@ async function run() {
       ].map((file) => includeFileInBuild(file))
     );
 
-    const newPkgJson = await changePkgJson(packagePath);
+    // const newPkgJson = await changePkgJson(packagePath);
 
-    const targetPath = path.resolve(buildPath, "./package.json");
+    // const targetPath = path.resolve(buildPath, "./package.json");
 
-    await fse.writeFile(
-      targetPath,
-      JSON.stringify(newPkgJson, null, 2),
-      "utf8"
-    );
-    console.log(`Created package.json in ${targetPath}`);
+    // await fse.writeFile(
+    //   targetPath,
+    //   JSON.stringify(newPkgJson, null, 2),
+    //   "utf8"
+    // );
+    // console.log(`Created package.json in ${targetPath}`);
   } catch (err) {
     console.error(err);
     process.exit(1);

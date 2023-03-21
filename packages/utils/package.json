@@ -18,7 +18,7 @@
     "build:types": "tsc -b ./tsconfig.build.json",
     "build": "pnpm clean && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
     "copyFiles": "node ../../script/copyFiles.mjs",
-    "publish": "pnpm publish --access public dist"
+    "publish": "pnpm publish --access public"
   },
   "dependencies": {
     "@date-io/luxon": "^2.16.1",
@@ -27,9 +27,6 @@
   },
   "peerDependencies": {
     "react": "^18.2.0"
-  },
-  "publishConfig": {
-    "directory": "dist"
   },
   "keywords": [],
   "author": "",

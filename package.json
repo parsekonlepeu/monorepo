@@ -9,11 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@parsekonlepeu/diary": "workspace:*",
-    "@parsekonlepeu/picker": "workspace:*",
-    "@parsekonlepeu/sharedutils": "workspace:*"
-  },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",

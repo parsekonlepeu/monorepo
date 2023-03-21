@@ -34,7 +34,7 @@ import { useTheme } from "@mui/material";
 import { getDateWeeks } from "../../../utils/functions/getDateWeeks";
 import { more_24Divide } from "../../../utils/functions/more_24Divide";
 import { refreshDatasDatesDisplay } from "../../../utils/functions/refresheDataDatesDisplay";
-import { getDates } from "@parsekonlepeu/sharedutils";
+import { getDates } from "@parsekonlepeu/utils";
 import { getEventDisplay } from "../../../utils/functions/getEventDisplay";
 import { separatesOver_24 } from "../../../utils/functions/separatesOver_24";
 
@@ -145,8 +145,9 @@ export const WeekView: React.FC<WeekViewProps> = ({ numbersOfWeek }) => {
   );
   const firstDayWeek = useAppSelector((state) => state.options.firstDayWeek);
 
-  const [datesDisplay, setDatesDisplay] =
-    React.useState<DatesDatasDisplay[][] | null>(null);
+  const [datesDisplay, setDatesDisplay] = React.useState<
+    DatesDatasDisplay[][] | null
+  >(null);
   const [lineNumber, setLineNumber] = React.useState<number>(0);
 
   const dispatch = useAppDispatch();
@@ -339,7 +340,10 @@ export const WeekView: React.FC<WeekViewProps> = ({ numbersOfWeek }) => {
           datesDisplay[0] &&
           datesDisplay[0].map((day, indexDay) => {
             return (
-              <div css={weekViewCss.nameDay} key={indexDay.toString()}>
+              <div
+                css={weekViewCss.nameDay}
+                key={indexDay.toString()}
+              >
                 <p>
                   {day.date
                     .toLocaleString({
@@ -354,7 +358,10 @@ export const WeekView: React.FC<WeekViewProps> = ({ numbersOfWeek }) => {
       {datesDisplay &&
         datesDisplay.map((week, indexWeek) => {
           return (
-            <div css={weekViewCss.rowWeekContenair} key={indexWeek.toString()}>
+            <div
+              css={weekViewCss.rowWeekContenair}
+              key={indexWeek.toString()}
+            >
               {week.map((day, indexDay) => {
                 const handleClick: React.MouseEventHandler<HTMLDivElement> = (
                   e

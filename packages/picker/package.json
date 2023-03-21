@@ -1,7 +1,7 @@
 {
   "name": "@parsekonlepeu/picker",
   "private": false,
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "picker date google like",
   "author": {
     "name": "Nicolas Angeon",
@@ -34,7 +34,7 @@
     "luxon": "^3.0.3"
   },
   "peerDependencies": {
-    "@parsekonlepeu/sharedutils": "workspace:*",
+    "@parsekonlepeu/utils": "workspace:*",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@reduxjs/toolkit": "^1.9.0",

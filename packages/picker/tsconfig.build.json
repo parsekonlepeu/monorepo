@@ -12,6 +12,6 @@
   "include": ["src"],
   "exclude": ["src/**/*.test.ts"],
   "references": [
-    { "path": "../../tools/utilShared/tsconfig.build.json" }
+    { "path": "../utils/tsconfig.build.json" }
   ]
 }

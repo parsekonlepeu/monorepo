@@ -1,13 +1,35 @@
 {
   "name": "@parsekonlepeu/utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "./src/index.js",
+  "private": false,
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "clean": "rimraf ./dist",
+    "build:esm": "node ../../script/build.mjs esm",
+    "build:cjs": "node ../../script/build.mjs cjs",
+    "build:types": "tsc -b ./tsconfig.build.json",
+    "build": "pnpm clean && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
+    "copyFiles": "node ../../script/copyFiles.mjs",
+    "publish": "pnpm publish --access public dist"
+  },
+  "dependencies": {
+    "@date-io/luxon": "^2.16.1",
+    "luxon": "^3.0.3",
+    "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "luxon": "^3.0.3"
+    "react": "^18.2.0"
+  },
+  "publishConfig": {
+    "directory": "dist"
   },
   "keywords": [],
   "author": "",

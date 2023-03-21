@@ -1,7 +1,7 @@
 {
   "name": "@parsekonlepeu/diary",
   "private": false,
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "diary google like",
   "author": {
     "name": "Nicolas Angeon",
@@ -31,7 +31,7 @@
   "dependencies": {
     "@date-io/luxon": "^2.16.1",
     "@parsekonlepeu/picker": "workspace:*",
-    "@parsekonlepeu/sharedutils": "workspace:*",
+    "@parsekonlepeu/utils": "workspace:*",
     "luxon": "^3.0.3",
     "react-color": "^2.19.3",
     "react-hook-form": "^7.39.7",

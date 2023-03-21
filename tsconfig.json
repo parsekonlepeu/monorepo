@@ -19,7 +19,7 @@
     "paths": {
       "@parsekonlepeu/picker": ["./packages/picker/src"],
       "@parsekonlepeu/diary": ["./packages/diary/src"],
-      "@parsekonlepeu/sharedutils": ["./tools/utilShared/src"],
+      "@parsekonlepeu/utils": ["./packages/utils/src"],
     }
   },
   "exclude": ["node_modules", "**/build"]

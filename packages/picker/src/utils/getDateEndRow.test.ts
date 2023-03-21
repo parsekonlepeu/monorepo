@@ -1,4 +1,4 @@
-import { base_date } from "@parsekonlepeu/sharedutils";
+import { base_date } from "@parsekonlepeu/utils";
 import { DateTime } from "luxon";
 import { getDateEndRow } from "./getDateEndRow";
 

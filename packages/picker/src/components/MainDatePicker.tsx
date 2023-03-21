@@ -7,7 +7,7 @@ import { DatepickerProps, MultipleDates, Period, SelectedDate } from "../types";
 import { usePickerSelector } from "../store/hooksTypedRedux";
 import { ContextOption } from "../context/ContextOption";
 // @ts-ignore
-import { getDates } from "@parsekonlepeu/sharedutils";
+import { getDates } from "@parsekonlepeu/utils";
 import { getDataDisplayPeriod } from "../utils/getDataDisplayPeriod";
 import { getDayPicker } from "../utils/getDayPicker";
 import { css } from "@emotion/react";

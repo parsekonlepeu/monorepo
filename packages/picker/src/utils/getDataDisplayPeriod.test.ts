@@ -1,6 +1,6 @@
 import { MultipleDates } from "../types";
 import { getDataDisplayPeriod } from "./getDataDisplayPeriod";
-import { base_date, getDates } from "@parsekonlepeu/sharedutils";
+import { base_date, getDates } from "@parsekonlepeu/utils";
 
 const arrayDate = getDates("sunday", 2, 2023);
 

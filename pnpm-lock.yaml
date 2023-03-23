@@ -208,7 +208,6 @@ importers:
       '@date-io/luxon': 2.16.1_luxon@3.3.0
       luxon: 3.3.0
       uuid: 9.0.0
-    publishDirectory: dist
 
   storybook:
     specifiers:

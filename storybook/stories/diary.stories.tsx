@@ -5,7 +5,7 @@ import {
   EventDiary,
   FunctionManageDiary,
   ReturnFunctionManageDiary,
-} from "@parsekonlepeu/diary";
+} from "../../packages/diary/src/index";
 import { createData } from "../createData";
 
 export default {

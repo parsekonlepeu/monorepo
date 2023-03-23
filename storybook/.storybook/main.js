@@ -13,23 +13,23 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
-  // webpackFinal: async (config, { configType }) => {
-  //   config.resolve.alias = {
-  //     "@parsekonlepeu/utils": path.resolve(
-  //       __dirname,
-  //       "../../packages/utils/dist/index"
-  //     ),
-  //     "@parsekonlepeu/diary": path.resolve(
-  //       __dirname,
-  //       "../../packages/diary/dist/index"
-  //     ),
-  //     "@parsekonlepeu/picker": path.resolve(
-  //       __dirname,
-  //       "../../packages/picker/dist/index"
-  //     ),
-  //   };
-  //   return config;
-  // },
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias = {
+      "@parsekonlepeu/utils": path.resolve(
+        __dirname,
+        "../../packages/utils/dist/index"
+      ),
+      "@parsekonlepeu/diary": path.resolve(
+        __dirname,
+        "../../packages/diary/dist/index"
+      ),
+      "@parsekonlepeu/picker": path.resolve(
+        __dirname,
+        "../../packages/picker/dist/index"
+      ),
+    };
+    return config;
+  },
   babel: async (options) => {
     const newoptions = {
       ...options,

@@ -2,27 +2,11 @@
   "name": "@parsekonlepeu/storybook",
   "version": "0.7.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "serve-storybook": "serve storybook-static"
-  },
-  "dependencies": {
-    "@date-io/luxon": "^2.16.1",
-    "lodash": "^4.17.21",
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "@mui/icons-material": "^5.10.6",
-    "@parsekonlepeu/diary": "workspace:*",
-    "@parsekonlepeu/picker": "workspace:*",
-    "@reduxjs/toolkit": "^1.9.0",
-    "luxon": "^3.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
-    "uuid": "^9.0.0"
   },
   "keywords": [],
   "author": "",

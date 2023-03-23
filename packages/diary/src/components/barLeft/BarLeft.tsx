@@ -1,7 +1,9 @@
 import * as React from "react";
 import { ContenairDiarysList } from "./ContenaireDiarysList";
-import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
-import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
+import {
+  KeyboardArrowDownRounded,
+  KeyboardArrowUpRounded,
+} from "@mui/icons-material";
 import { PickerBarLeft } from "./PickerBarLeft";
 import { Collapse, useTheme } from "@mui/material";
 import { useAppSelector } from "../../utils/hooks/hooksTypedRedux";
@@ -73,12 +75,15 @@ const DiarySelect: React.FC = () => {
 
   return (
     <>
-      <div css={DiarySelectCss.mainContenair} onClick={handleClickListDiary}>
+      <div
+        css={DiarySelectCss.mainContenair}
+        onClick={handleClickListDiary}
+      >
         <p>Mes agendas</p>
         {listDiarysOpen ? (
-          <KeyboardArrowDownRoundedIcon sx={{ fontSize: "20px", mr: "10px" }} />
+          <KeyboardArrowDownRounded sx={{ fontSize: "20px", mr: "10px" }} />
         ) : (
-          <KeyboardArrowUpRoundedIcon sx={{ fontSize: "20px", mr: "10px" }} />
+          <KeyboardArrowUpRounded sx={{ fontSize: "20px", mr: "10px" }} />
         )}
       </div>
       <Collapse in={listDiarysOpen}>

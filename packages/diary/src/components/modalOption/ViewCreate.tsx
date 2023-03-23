@@ -1,6 +1,5 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import { SxProps, useTheme } from "@mui/material";
+import { SxProps, useTheme, Box } from "@mui/material";
 import { CreateDiary } from "./create/CreateDiary";
 
 const styleContenaire: SxProps = {

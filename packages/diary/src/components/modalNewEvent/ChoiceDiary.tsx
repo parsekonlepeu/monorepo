@@ -1,5 +1,5 @@
 import * as React from "react";
-import InsertInvitationRoundedIcon from "@mui/icons-material/InsertInvitationRounded";
+import { InsertInvitationRounded } from "@mui/icons-material";
 import { PoppoverListDiary } from "./PoppoverListDiary";
 import { ChoiceDiaryColor } from "./ChoiceDiaryColor";
 import { css } from "@emotion/react";
@@ -31,7 +31,7 @@ export const ChoiceDiary: React.FC = () => {
   return (
     <div css={choiceDiaryCss.mainContenair}>
       <div css={choiceDiaryCss.iconContenair}>
-        <InsertInvitationRoundedIcon />
+        <InsertInvitationRounded />
       </div>
       <div
         css={[

@@ -1,5 +1,5 @@
 import * as React from "react";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { AddRounded } from "@mui/icons-material";
 import { useTheme } from "@mui/material";
 import {
   useAppDispatch,
@@ -46,8 +46,11 @@ export const ButtonNewEvent: React.FC = () => {
   }, [leftExtend]);
 
   return (
-    <div css={buttonNewEventCss.mainContenair} onClick={handleClickOpenClose}>
-      <AddRoundedIcon
+    <div
+      css={buttonNewEventCss.mainContenair}
+      onClick={handleClickOpenClose}
+    >
+      <AddRounded
         sx={{
           fontSize: "30px",
           color: theme.google.primary,

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "composite": true,
-    "declaration": true,
+    "emitDeclarationOnly": true,
     "noEmit": false,
-    "outDir": "./dist/esm",
+    "outDir": "./dist/types",
     "rootDir": "./src",
     "incremental": true,
     "tsBuildInfoFile": "./tsconfig.tsbuildinfo"

@@ -1,7 +1,7 @@
 import * as React from "react";
-import IconButton from "@mui/material/IconButton";
+import { IconButton } from "@mui/material";
 import { SelectDisplayMode } from "./SelectDisplayMode";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { SearchOutlined } from "@mui/icons-material";
 import { SelectParams } from "./SelectParams";
 import { ModalOptions } from "../modalOption/ModalOptions";
 import { WithPopper } from "../withPopper/WithPopper";
@@ -24,7 +24,10 @@ interface BarTopRightProps {
 export const BarTopRight: React.FC<BarTopRightProps> = ({ image, title }) => {
   return (
     <div css={BarTopRightCss.mainContenair}>
-      <WithPopper textDisplay={"Recherche"} top="40px">
+      <WithPopper
+        textDisplay={"Recherche"}
+        top="40px"
+      >
         <IconButton
           aria-label="search"
           size="small"
@@ -33,7 +36,7 @@ export const BarTopRight: React.FC<BarTopRightProps> = ({ image, title }) => {
             width: "30px",
           }}
         >
-          <SearchOutlinedIcon
+          <SearchOutlined
             fontSize="small"
             sx={{
               height: "18px",

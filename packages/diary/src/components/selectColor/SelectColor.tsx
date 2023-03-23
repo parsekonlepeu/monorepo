@@ -1,6 +1,5 @@
 import * as React from "react";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
+import { AddRounded, DoneRounded } from "@mui/icons-material";
 import { colorsDiarys } from "../../utils/constants";
 import { useTheme } from "@mui/material";
 import { WithPopper } from "../withPopper/WithPopper";
@@ -66,9 +65,15 @@ export const SelectColor: React.FC<SelectColorProps> = ({
   return (
     <div css={selectColorCss.mainContenair}>
       {arrRow.map((x, indexRow) => (
-        <div css={selectColorCss.rowContenair} key={indexRow.toString()}>
+        <div
+          css={selectColorCss.rowContenair}
+          key={indexRow.toString()}
+        >
           {arrColumn.map((x, indexColumn) => (
-            <div css={selectColorCss.case} key={indexColumn.toString()}>
+            <div
+              css={selectColorCss.case}
+              key={indexColumn.toString()}
+            >
               <WithPopper
                 textDisplay={colorsDiarys[indexColumn + indexRow * 6].name}
                 top={indexRow > 1 ? "-40px" : "40px"}
@@ -84,7 +89,7 @@ export const SelectColor: React.FC<SelectColorProps> = ({
                 >
                   {currentColor ===
                   colorsDiarys[indexColumn + indexRow * 6].rgb ? (
-                    <DoneRoundedIcon
+                    <DoneRounded
                       fontSize="large"
                       sx={{
                         fontSize: "15px",
@@ -109,7 +114,7 @@ export const SelectColor: React.FC<SelectColorProps> = ({
               }}
               onClick={onClickColorPerso}
             >
-              <DoneRoundedIcon
+              <DoneRounded
                 fontSize="large"
                 sx={{
                   fontSize: "15px",
@@ -125,7 +130,7 @@ export const SelectColor: React.FC<SelectColorProps> = ({
             }}
             onClick={onClickColorPerso}
           >
-            <AddRoundedIcon
+            <AddRounded
               sx={{
                 fontSize: "15px",
                 color: theme.google.textfieldHairline,

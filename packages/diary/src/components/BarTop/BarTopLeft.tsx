@@ -1,9 +1,10 @@
 import * as React from "react";
-import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
-import NavigateBeforeRoundedIcon from "@mui/icons-material/NavigateBeforeRounded";
-import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
-import KeyboardBackspaceRoundedIcon from "@mui/icons-material/KeyboardBackspaceRounded";
+import { Button, IconButton } from "@mui/material";
+import {
+  NavigateBeforeRounded,
+  NavigateNextRounded,
+  KeyboardBackspaceRounded,
+} from "@mui/icons-material";
 import { DateTime } from "luxon";
 import { DateBarTop } from "./DateBarTop";
 import grey from "@mui/material/colors/grey";
@@ -241,9 +242,15 @@ export const BarTopLeft: React.FC<BarTopLeftProps> = ({ image, title }) => {
           color: "black",
         }}
       >
-        <KeyboardBackspaceRoundedIcon fontSize="small" sx={styleArrow} />
+        <KeyboardBackspaceRounded
+          fontSize="small"
+          sx={styleArrow}
+        />
       </IconButton>
-      <WithPopper textDisplay={forPoppers.forTodayPopper} top="40px">
+      <WithPopper
+        textDisplay={forPoppers.forTodayPopper}
+        top="40px"
+      >
         <Button
           sx={{
             ...styleTodayButton,
@@ -257,7 +264,10 @@ export const BarTopLeft: React.FC<BarTopLeftProps> = ({ image, title }) => {
           Aujourd'hui
         </Button>
       </WithPopper>
-      <WithPopper textDisplay={forPoppers.forPreviousPopper} top="40px">
+      <WithPopper
+        textDisplay={forPoppers.forPreviousPopper}
+        top="40px"
+      >
         <IconButton
           aria-label="back"
           size="small"
@@ -267,10 +277,16 @@ export const BarTopLeft: React.FC<BarTopLeftProps> = ({ image, title }) => {
           }}
           onClick={handleClickPrevious}
         >
-          <NavigateBeforeRoundedIcon fontSize="small" sx={styleArrow} />
+          <NavigateBeforeRounded
+            fontSize="small"
+            sx={styleArrow}
+          />
         </IconButton>
       </WithPopper>
-      <WithPopper textDisplay={forPoppers.forNextPopper} top="40px">
+      <WithPopper
+        textDisplay={forPoppers.forNextPopper}
+        top="40px"
+      >
         <IconButton
           aria-label="next"
           size="small"
@@ -280,7 +296,10 @@ export const BarTopLeft: React.FC<BarTopLeftProps> = ({ image, title }) => {
           }}
           onClick={handleClickNext}
         >
-          <NavigateNextRoundedIcon fontSize="small" sx={styleArrow} />
+          <NavigateNextRounded
+            fontSize="small"
+            sx={styleArrow}
+          />
         </IconButton>
       </WithPopper>
       <DateBarTop />

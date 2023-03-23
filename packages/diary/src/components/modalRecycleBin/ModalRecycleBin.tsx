@@ -3,8 +3,8 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../utils/hooks/hooksTypedRedux";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { Divider, SxProps, Modal } from "@mui/material";
+import { CloseRounded } from "@mui/icons-material";
+import { Divider, Modal } from "@mui/material";
 import {
   AutoSizer as _AutoSizer,
   List as _List,
@@ -148,7 +148,10 @@ export const ModalRecyclebin: React.FC = () => {
   );
 
   return (
-    <Modal open={modalRecycleBin} onClose={handleCloseModalRecycleBin}>
+    <Modal
+      open={modalRecycleBin}
+      onClose={handleCloseModalRecycleBin}
+    >
       <div
         css={[
           modalRecycledbinCss.mainContenair,
@@ -168,7 +171,7 @@ export const ModalRecyclebin: React.FC = () => {
           ]}
         >
           <p>Corbeille</p>
-          <CloseRoundedIcon />
+          <CloseRounded />
         </div>
         <Divider />
         <div css={modalRecycledbinCss.bottomContenair}>

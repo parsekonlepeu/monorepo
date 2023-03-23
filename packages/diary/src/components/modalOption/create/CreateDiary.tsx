@@ -1,10 +1,13 @@
 import * as React from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { SxProps, useTheme } from "@mui/material";
+import {
+  SxProps,
+  useTheme,
+  Box,
+  Typography,
+  TextField,
+  Button,
+} from "@mui/material";
 import { DateTime } from "luxon";
 import { Diary, IdDiary, OnChoice } from "../../../types";
 import { useAppDispatch } from "../../../utils/hooks/hooksTypedRedux";
@@ -196,7 +199,10 @@ export const CreateDiary: React.FC = (props) => {
       >
         Créer un agenda
       </Typography>
-      <Box component={"form"} onSubmit={handleSubmit(onSubmit)}>
+      <Box
+        component={"form"}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div>
           <Controller
             name="nomAgenda"

@@ -1,5 +1,6 @@
 module.exports = function getBabelConfig(api) {
-  const useESModules = api.env(["esm", "legacy", "modern", "stable", "rollup"]);
+  const useESModules = api.env(["esm"]);
+  const useUmdModule = api.env(["umd"]);
 
   const presets = [
     [
@@ -8,7 +9,7 @@ module.exports = function getBabelConfig(api) {
         bugfixes: true,
         // browserslistEnv: process.env.BABEL_ENV || process.env.NODE_ENV,
         debug: process.env.BUILD_VERBOSE === "true",
-        modules: useESModules ? false : "commonjs",
+        modules: useESModules ? false : useUmdModule ? "umd" : "cjs",
         // shippedProposals: api.env('modern'),
       },
     ],
@@ -16,6 +17,7 @@ module.exports = function getBabelConfig(api) {
       "@babel/preset-react",
       {
         runtime: "automatic",
+        importSource: "@emotion/react",
       },
     ],
     "@babel/preset-typescript",

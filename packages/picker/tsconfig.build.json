@@ -3,7 +3,7 @@
     "composite": true,
     "declaration": true,
     "noEmit": false,
-    "outDir": "./dist/esm",
+    "outDir": "./dist/types",
     "rootDir": "./src",
     "incremental": true,
     "tsBuildInfoFile": "./tsconfig.tsbuildinfo"

@@ -14,11 +14,6 @@ export const SnackBarInfo: React.FC = () => {
     (state) => state.general.snackbarVisible
   );
 
-  React.useEffect(() => {
-    console.log("snackbarVisible : ", snackbarVisible);
-    console.log("snackbarParams : ", snackbarParams);
-  }, [snackbarVisible, snackbarParams]);
-
   const dispatch = useAppDispatch();
 
   const handleCloseSnackbar = React.useCallback(() => {

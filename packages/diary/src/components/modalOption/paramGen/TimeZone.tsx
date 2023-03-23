@@ -1,9 +1,12 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import { SxProps, useTheme } from "@mui/material";
+import {
+  SxProps,
+  useTheme,
+  Box,
+  Typography,
+  Checkbox,
+  FormControlLabel,
+} from "@mui/material";
 import {
   useAppDispatch,
   useAppSelector,
@@ -80,7 +83,10 @@ export const TimeZone: React.FC = () => {
   }, [askCurrentPos]);
 
   return (
-    <Box sx={styleContenaire} id="time-zone">
+    <Box
+      sx={styleContenaire}
+      id="time-zone"
+    >
       <Typography
         sx={{
           color: theme.google.onSurfaceVariantAgm,
@@ -99,7 +105,10 @@ export const TimeZone: React.FC = () => {
       />
       <FormControlLabel
         control={
-          <Checkbox checked={askCurrentPos} onChange={handleCheckedAsk} />
+          <Checkbox
+            checked={askCurrentPos}
+            onChange={handleCheckedAsk}
+          />
         }
         label={
           <Typography

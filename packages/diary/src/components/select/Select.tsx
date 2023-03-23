@@ -1,9 +1,6 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
-import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
-import { SxProps, useTheme } from "@mui/material";
+import { ArrowDropDownOutlined } from "@mui/icons-material";
+import { SxProps, useTheme, Typography, Popover, Box } from "@mui/material";
 import { Choices, InfoPays, OnChoice } from "../../types";
 
 const styleContenaire: SxProps = {
@@ -94,7 +91,7 @@ export const Select: React.FC<SelectProps> = ({
         <Typography sx={styleValue}>{value}</Typography>
       </Box>
       <Box sx={styleBoxArrow}>
-        <ArrowDropDownOutlinedIcon sx={{ fontSize: "18px" }} />
+        <ArrowDropDownOutlined sx={{ fontSize: "18px" }} />
       </Box>
       <Popover
         open={open}
@@ -106,14 +103,15 @@ export const Select: React.FC<SelectProps> = ({
       >
         <Box>
           {choices.map((choice, index) => {
-            const handleClickChoice: React.MouseEventHandler<HTMLDivElement> =
-              () => {
-                const c =
-                  typeof choice === "string" || typeof choice === "number"
-                    ? choice
-                    : choice.name;
-                onChoice(c);
-              };
+            const handleClickChoice: React.MouseEventHandler<
+              HTMLDivElement
+            > = () => {
+              const c =
+                typeof choice === "string" || typeof choice === "number"
+                  ? choice
+                  : choice.name;
+              onChoice(c);
+            };
             return (
               <Box
                 sx={{

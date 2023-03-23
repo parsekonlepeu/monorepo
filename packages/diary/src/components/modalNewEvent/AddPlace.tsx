@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useForm, Controller } from "react-hook-form";
-import AddLocationAltOutlinedIcon from "@mui/icons-material/AddLocationAltOutlined";
+import { AddLocationAltOutlined } from "@mui/icons-material";
 import { SxProps, TextField, useTheme } from "@mui/material";
 import { css } from "@emotion/react";
 import { WIDTH_MODAL_NEW_EVENT } from "../../utils/constants";
@@ -51,7 +51,7 @@ export const AddPlace: React.FC = () => {
   return (
     <div css={addPlaceCss.mainContenair}>
       <div css={addPlaceCss.iconConteniar}>
-        <AddLocationAltOutlinedIcon />
+        <AddLocationAltOutlined />
       </div>
       <div
         css={[

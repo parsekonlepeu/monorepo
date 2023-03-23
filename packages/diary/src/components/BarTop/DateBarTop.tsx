@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, Zoom } from "@mui/material";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { ArrowDropDown } from "@mui/icons-material";
 import { DateTime } from "luxon";
 import grey from "@mui/material/colors/grey";
 import { useAppSelector } from "../../utils/hooks/hooksTypedRedux";
@@ -89,7 +89,7 @@ const DateWithDatePicker: React.FC<DateWithDatePickerProps> = ({
       >
         {picker ? <div css={DateCss.quitPicker} /> : null}
         <p>{dateString}</p>
-        <ArrowDropDownIcon sx={{ width: "20px", mr: "5px" }} />
+        <ArrowDropDown sx={{ width: "20px", mr: "5px" }} />
         <Zoom in={picker}>
           <Box sx={stylePickerContenair}>
             <DatePicker />

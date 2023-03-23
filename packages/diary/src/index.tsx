@@ -1,16 +1,13 @@
-import * as React from "react";
 import { Provider } from "react-redux";
+import * as React from "react";
 import { theme } from "./theme";
 import { ThemeProvider } from "@mui/material/styles";
-import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 import Divider from "@mui/material/Divider";
 import { BarTopLeft } from "./components/BarTop/BarTopLeft";
 import { BarTopRight } from "./components/BarTop/BarTopRight";
 import store from "./store/store";
-import { contextPerso, useAppDispatch } from "./utils/hooks/hooksTypedRedux";
-import { refreshListServices } from "./store/slices/generalSlice";
+import { contextPerso } from "./utils/hooks/hooksTypedRedux";
 import { ContextFunctionManage } from "./context/context-function-manage";
-import { refreshRecycleBin } from "./store/slices/recycleBinSlice";
 import { ModalRecyclebin } from "./components/modalRecycleBin/ModalRecycleBin";
 import { BarLeft } from "./components/barLeft/BarLeft";
 import { MainView } from "./components/viewsCalendar/MainView";
@@ -18,7 +15,6 @@ import { LeftOpenClose } from "./components/barLeft/LeftOpenClose";
 import { ButtonNewEvent } from "./components/barLeft/ButtonNewEvent";
 import { ContenairModalnewEvent } from "./components/modalNewEvent/ContenairModalNewEvent";
 import { SnackBarInfo } from "./components/snack-bar-info/SnackBarInfo";
-import { refreshDiarys } from "./store/slices/diarysSlice";
 import {
   ConfigurableOptions,
   CustomizeView,
@@ -137,13 +133,14 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
   };
 
   return (
-    <Provider context={contextPerso} store={store}>
+    <Provider
+      context={contextPerso}
+      store={store}
+    >
       <ThemeProvider theme={theme}>
-        <EmotionThemeProvider theme={theme}>
-          <ContextFunctionManage.Provider value={valueContext}>
-            <Container {...props} />
-          </ContextFunctionManage.Provider>
-        </EmotionThemeProvider>
+        <ContextFunctionManage.Provider value={valueContext}>
+          <Container {...props} />
+        </ContextFunctionManage.Provider>
       </ThemeProvider>
     </Provider>
   );

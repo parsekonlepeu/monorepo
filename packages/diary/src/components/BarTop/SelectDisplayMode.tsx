@@ -1,13 +1,12 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
-import Grow from "@mui/material/Grow";
-import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
-import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
+import {
+  ArrowDropDownOutlined,
+  ArrowDropUpOutlined,
+} from "@mui/icons-material";
 import { useAppSelector } from "../../utils/hooks/hooksTypedRedux";
 import { Mode } from "./Mode";
 import { css } from "@emotion/react";
-import { useTheme } from "@mui/material";
-import { SxProps } from "@mui/material";
+import { useTheme, SxProps, Paper, Grow } from "@mui/material";
 
 const stylePaperGrow: SxProps = {
   m: 1,
@@ -85,9 +84,9 @@ export const SelectDisplayMode: React.FC = () => {
         {displayMode}
       </p>
       {!open ? (
-        <ArrowDropDownOutlinedIcon sx={{ fontSize: "20px" }} />
+        <ArrowDropDownOutlined sx={{ fontSize: "20px" }} />
       ) : (
-        <ArrowDropUpOutlinedIcon sx={{ fontSize: "20px" }} />
+        <ArrowDropUpOutlined sx={{ fontSize: "20px" }} />
       )}
       <Grow in={open}>
         <Paper

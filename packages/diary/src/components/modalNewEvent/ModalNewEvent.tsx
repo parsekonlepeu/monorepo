@@ -9,8 +9,7 @@ import {
   useTheme,
   Divider,
 } from "@mui/material";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import DragHandleRoundedIcon from "@mui/icons-material/DragHandleRounded";
+import { CloseRounded, DragHandleRounded } from "@mui/icons-material";
 import {
   useAppDispatch,
   useAppSelector,
@@ -126,65 +125,66 @@ export const ModalNewEvent: React.FC<ModalNewEventProps> = ({ posModal }) => {
       e.stopPropagation();
     }, []);
 
-  const handleMouseDownChangePositon: React.MouseEventHandler<HTMLDivElement> =
-    (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      const yInit = event.clientY;
-      const xInit = event.clientX;
-      if (refMain.current) {
-        const topInit = computStyleToNumber("top", refMain.current);
-        const leftInit = computStyleToNumber("left", refMain.current);
-        const onMoveChangePosition = (e: MouseEvent) => {
-          if (refMain.current) {
-            e.preventDefault();
-            e.stopPropagation();
-            dispatch(changeFlowMoveModalEvent(true));
-            const computStyleWidth = computStyleToNumber(
-              "width",
-              refMain.current
-            );
-            const computStyleHeight = computStyleToNumber(
-              "height",
-              refMain.current
-            );
-            let newTop = topInit + (e.clientY - yInit);
-            let newLeft = leftInit + (e.clientX - xInit);
-            if (newLeft < 246) {
-              dispatch(changeModalNewEventIsInAnchor(true));
-            } else {
-              dispatch(changeModalNewEventIsInAnchor(false));
-            }
-            if (newLeft < 0) {
-              newLeft = 0;
-            }
-            if (newTop < 0) {
-              newTop = 0;
-            }
-            if (newLeft + computStyleWidth > window.innerWidth) {
-              newLeft = window.innerWidth - computStyleWidth;
-            }
-            if (newTop + computStyleHeight > window.innerHeight) {
-              newTop = window.innerHeight - computStyleHeight;
-            }
-
-            refMain.current.style.top = `${newTop}px`;
-            refMain.current.style.left = `${newLeft}px`;
+  const handleMouseDownChangePositon: React.MouseEventHandler<
+    HTMLDivElement
+  > = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const yInit = event.clientY;
+    const xInit = event.clientX;
+    if (refMain.current) {
+      const topInit = computStyleToNumber("top", refMain.current);
+      const leftInit = computStyleToNumber("left", refMain.current);
+      const onMoveChangePosition = (e: MouseEvent) => {
+        if (refMain.current) {
+          e.preventDefault();
+          e.stopPropagation();
+          dispatch(changeFlowMoveModalEvent(true));
+          const computStyleWidth = computStyleToNumber(
+            "width",
+            refMain.current
+          );
+          const computStyleHeight = computStyleToNumber(
+            "height",
+            refMain.current
+          );
+          let newTop = topInit + (e.clientY - yInit);
+          let newLeft = leftInit + (e.clientX - xInit);
+          if (newLeft < 246) {
+            dispatch(changeModalNewEventIsInAnchor(true));
+          } else {
+            dispatch(changeModalNewEventIsInAnchor(false));
           }
-        };
-        event.currentTarget.addEventListener(
-          "mouseup",
-          (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            dispatch(changeFlowMoveModalEvent(false));
-            document.removeEventListener("mousemove", onMoveChangePosition);
-          },
-          { once: true }
-        );
-        document.addEventListener("mousemove", onMoveChangePosition);
-      }
-    };
+          if (newLeft < 0) {
+            newLeft = 0;
+          }
+          if (newTop < 0) {
+            newTop = 0;
+          }
+          if (newLeft + computStyleWidth > window.innerWidth) {
+            newLeft = window.innerWidth - computStyleWidth;
+          }
+          if (newTop + computStyleHeight > window.innerHeight) {
+            newTop = window.innerHeight - computStyleHeight;
+          }
+
+          refMain.current.style.top = `${newTop}px`;
+          refMain.current.style.left = `${newLeft}px`;
+        }
+      };
+      event.currentTarget.addEventListener(
+        "mouseup",
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dispatch(changeFlowMoveModalEvent(false));
+          document.removeEventListener("mousemove", onMoveChangePosition);
+        },
+        { once: true }
+      );
+      document.addEventListener("mousemove", onMoveChangePosition);
+    }
+  };
 
   const handleSave = async () => {
     const textfeildDescription = document.getElementById(
@@ -269,7 +269,10 @@ export const ModalNewEvent: React.FC<ModalNewEventProps> = ({ posModal }) => {
         top: posModal.y,
       }}
     >
-      <Paper elevation={20} sx={stylePaper}>
+      <Paper
+        elevation={20}
+        sx={stylePaper}
+      >
         <div
           css={[
             modalNewEventCss.topContenair,
@@ -280,10 +283,10 @@ export const ModalNewEvent: React.FC<ModalNewEventProps> = ({ posModal }) => {
           onMouseDown={handleMouseDownChangePositon}
         >
           <IconButton>
-            <DragHandleRoundedIcon />
+            <DragHandleRounded />
           </IconButton>
           <IconButton>
-            <CloseRoundedIcon />
+            <CloseRounded />
           </IconButton>
         </div>
         <div

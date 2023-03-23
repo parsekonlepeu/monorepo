@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Popover, useTheme } from "@mui/material";
-import DeleteOutlineRounded from "@mui/icons-material/DeleteOutlineRounded";
+import { DeleteOutlineRounded } from "@mui/icons-material";
 import { SelectColor } from "../selectColor/SelectColor";
 import { css } from "@emotion/react";
 

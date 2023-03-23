@@ -1,11 +1,11 @@
 {
   "name": "@parsekonlepeu/utils",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "private": false,
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/index",
+  "module": "./dist/index",
+  "types": "./dist/types/index",
   "files": [
     "dist"
   ],
@@ -14,9 +14,9 @@
     "test": "jest",
     "clean": "rimraf ./dist",
     "build:esm": "node ../../script/build.mjs esm",
-    "build:cjs": "node ../../script/build.mjs cjs",
-    "build:types": "tsc -b ./tsconfig.build.json",
-    "build": "pnpm clean && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
+    "build:amd": "node ../../script/build.mjs amd",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build": "pnpm clean && pnpm build:esm && pnpm build:amd && pnpm build:types && pnpm copyFiles",
     "copyFiles": "node ../../script/copyFiles.mjs",
     "publish": "pnpm publish --access public"
   },

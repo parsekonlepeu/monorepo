@@ -5,7 +5,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../utils/hooks/hooksTypedRedux";
-import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
+import { ArrowDropDownRounded } from "@mui/icons-material";
 import { css } from "@emotion/react";
 import { useTheme } from "@mui/material";
 
@@ -92,7 +92,7 @@ export const PoppoverListDiary: React.FC = () => {
         onClick={handleClickChoiceDiary}
       >
         <p>{diaryChoose}</p>
-        <ArrowDropDownRoundedIcon />
+        <ArrowDropDownRounded />
       </div>
       <Popover
         open={popChoiceDiary}

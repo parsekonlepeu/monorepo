@@ -91,7 +91,10 @@ export const DatePicker: React.FC<Partial<DatepickerProps>> = ({
   };
 
   return (
-    <Provider context={contextDatePicker} store={refStorePicker.current}>
+    <Provider
+      context={contextDatePicker}
+      store={refStorePicker.current}
+    >
       <ContextOption.Provider value={valueContextOption}>
         <PickerContenair />
       </ContextOption.Provider>
@@ -104,7 +107,6 @@ const contenairPickerCss = {
     display: "flex",
     flexDirection: "column",
     cursor: "default",
-    // border: "solid 1px",
   }),
 };
 

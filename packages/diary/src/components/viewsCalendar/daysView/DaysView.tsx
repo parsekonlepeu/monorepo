@@ -19,8 +19,10 @@ import {
 } from "../../../store/slices/generalSlice";
 import { SelectedDate } from "../../../types";
 import { EventDay } from "./EventDay";
-import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
-import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
+import {
+  KeyboardArrowDownRounded,
+  KeyboardArrowUpRounded,
+} from "@mui/icons-material";
 import { EventAllDay } from "./EventAllDay";
 import { WithPopper } from "../../withPopper/WithPopper";
 import { css } from "@emotion/react";
@@ -217,7 +219,10 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
         }}
       >
         {new Array(numbersOfDay).fill(null).map((day, index) => (
-          <div key={index.toString()} css={daysViewCss.backgroundDivider} />
+          <div
+            key={index.toString()}
+            css={daysViewCss.backgroundDivider}
+          />
         ))}
       </div>
       <div
@@ -228,7 +233,10 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
           },
         ]}
       >
-        <div css={daysViewCss.clickAllDayLeft} onClick={handleReduceAllDay}>
+        <div
+          css={daysViewCss.clickAllDayLeft}
+          onClick={handleReduceAllDay}
+        >
           {(eventMoreThan_24.length >= 4 ||
             eventMoreThan_24Trunc.length !== 0) && (
             <WithPopper
@@ -249,9 +257,9 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
                 ]}
               >
                 {reducedAllDay ? (
-                  <KeyboardArrowDownRoundedIcon />
+                  <KeyboardArrowDownRounded />
                 ) : (
-                  <KeyboardArrowUpRoundedIcon />
+                  <KeyboardArrowUpRounded />
                 )}
               </div>
             </WithPopper>
@@ -279,7 +287,10 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
                 onMouseDown={clickColumn}
                 key={index.toString()}
               >
-                <div css={daysViewCss.topDayView} key={index.toString()}>
+                <div
+                  css={daysViewCss.topDayView}
+                  key={index.toString()}
+                >
                   <div css={daysViewCss.topDay}>
                     <div css={daysViewCss.nameDay}>
                       <p
@@ -386,7 +397,10 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
         id="main-days-view"
       >
         <HoursLeft />
-        <div css={daysViewCss.rowDayViewContenair} id="contenairRowDaysView">
+        <div
+          css={daysViewCss.rowDayViewContenair}
+          id="contenairRowDaysView"
+        >
           {daysDisplay.map((day, index) => {
             const clickColumn = forClickColumnDaysView(
               day,

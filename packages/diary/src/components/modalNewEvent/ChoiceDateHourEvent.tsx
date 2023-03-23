@@ -1,5 +1,5 @@
 import * as React from "react";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { AccessTime } from "@mui/icons-material";
 import { Checkbox, FormControlLabel, useTheme } from "@mui/material";
 import { DateTime } from "luxon";
 import {
@@ -143,7 +143,7 @@ export const ChoiceDateHourEvent: React.FC = () => {
         ]}
       >
         <div css={choiceDateHourEventCss.iconContenair}>
-          <AccessTimeIcon />
+          <AccessTime />
         </div>
         <div css={{ flexDirection: "column" }}>
           <div css={choiceDateHourEventCss.choicesContenair}>

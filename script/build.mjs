@@ -9,7 +9,7 @@ import ChildProcess from "child_process";
 
 const exec = promisify(ChildProcess.exec);
 
-const validBundles = ["esm", "cjs"];
+const validBundles = ["esm", "node", "amd"];
 
 const run = async (argv) => {
   const { bundle, outDir: relativeOutDir, verbose } = argv;
@@ -44,7 +44,14 @@ const run = async (argv) => {
     "**/*.d.ts",
   ];
 
-  const outDir = path.resolve(relativeOutDir, bundle);
+  const outDir = path.resolve(
+    relativeOutDir,
+    {
+      node: "./node",
+      esm: "./",
+      amd: "./amd",
+    }[bundle]
+  );
 
   const babelArgs = [
     "--config-file",

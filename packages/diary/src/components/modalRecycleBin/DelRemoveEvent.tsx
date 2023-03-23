@@ -1,7 +1,6 @@
 import * as React from "react";
 import { IconButton, SxProps } from "@mui/material";
-import UTurnLeftIcon from "@mui/icons-material/UTurnLeft";
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { UTurnLeft, DeleteOutlineOutlined } from "@mui/icons-material";
 import { css } from "@emotion/react";
 
 interface DelRemoveEventProps {
@@ -44,7 +43,7 @@ export const DelRemoveEvent: React.FC<DelRemoveEventProps> = ({
         sx={styleIconButton}
         onClick={onRestore}
       >
-        <UTurnLeftIcon
+        <UTurnLeft
           fontSize="small"
           sx={{
             ...styleIcon,
@@ -58,7 +57,10 @@ export const DelRemoveEvent: React.FC<DelRemoveEventProps> = ({
         sx={styleIconButton}
         onClick={onDelete}
       >
-        <DeleteOutlineOutlinedIcon fontSize="small" sx={styleIcon} />
+        <DeleteOutlineOutlined
+          fontSize="small"
+          sx={styleIcon}
+        />
       </IconButton>
     </div>
   );

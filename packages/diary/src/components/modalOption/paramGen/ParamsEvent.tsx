@@ -1,7 +1,5 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { SxProps, useTheme } from "@mui/material";
+import { SxProps, useTheme, Box, Typography } from "@mui/material";
 import {
   useAppDispatch,
   useAppSelector,

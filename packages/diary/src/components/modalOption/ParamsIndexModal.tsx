@@ -1,9 +1,9 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
-import { SxProps, useTheme } from "@mui/material";
-import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
-import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
+import { SxProps, useTheme, Collapse, Box } from "@mui/material";
+import {
+  KeyboardArrowDownRounded,
+  KeyboardArrowUpRounded,
+} from "@mui/icons-material";
 import { useAppSelector } from "../../utils/hooks/hooksTypedRedux";
 import { ListParams } from "./ListParams";
 import { IdName, IdTitleModal } from "../../types";
@@ -78,13 +78,16 @@ export const ParamsIndexModal: React.FC<ParamsIndexModalProps> = ({
           {title}
         </p>
         {open ? (
-          <KeyboardArrowDownRoundedIcon sx={{ fontSize: "20px", mr: "10px" }} />
+          <KeyboardArrowDownRounded sx={{ fontSize: "20px", mr: "10px" }} />
         ) : (
-          <KeyboardArrowUpRoundedIcon sx={{ fontSize: "20px", mr: "10px" }} />
+          <KeyboardArrowUpRounded sx={{ fontSize: "20px", mr: "10px" }} />
         )}
       </Box>
       <Collapse in={open}>
-        <ListParams listParams={listParams} idTitle={id} />
+        <ListParams
+          listParams={listParams}
+          idTitle={id}
+        />
       </Collapse>
     </Box>
   );

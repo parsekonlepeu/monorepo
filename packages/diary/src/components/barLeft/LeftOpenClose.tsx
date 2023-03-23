@@ -1,5 +1,5 @@
 import * as React from "react";
-import DehazeRoundedIcon from "@mui/icons-material/Dehaze";
+import { DehazeRounded } from "@mui/icons-material";
 import {
   useAppDispatch,
   useAppSelector,
@@ -50,7 +50,7 @@ export const LeftOpenClose: React.FC = () => {
       onClick={handleClickOpenClose}
       {...onHover}
     >
-      <DehazeRoundedIcon
+      <DehazeRounded
         sx={{
           fontSize: "25px",
         }}

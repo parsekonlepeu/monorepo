@@ -4,7 +4,7 @@ import {
   useAppSelector,
 } from "../../utils/hooks/hooksTypedRedux";
 import { DiaryList } from "./DiaryList";
-import Modal from "@mui/material/Modal";
+import { Modal } from "@mui/material";
 import {
   changeModalChoiceColor,
   changeModalUnsubscribeDiary,
@@ -65,7 +65,10 @@ export const ContenairDiarysList: React.FC = () => {
       >
         <ModalChoiceColor />
       </Modal>
-      <Modal open={modalUnsubscribeDiary} onClose={handleCloseUnsub}>
+      <Modal
+        open={modalUnsubscribeDiary}
+        onClose={handleCloseUnsub}
+      >
         <ModalDeleteDiary />
       </Modal>
     </div>

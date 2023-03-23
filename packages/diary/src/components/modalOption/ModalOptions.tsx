@@ -1,9 +1,13 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import IconButton from "@mui/material/IconButton";
-import { SxProps, useTheme, Modal } from "@mui/material";
+import { CloseRounded } from "@mui/icons-material";
+import {
+  SxProps,
+  useTheme,
+  Modal,
+  IconButton,
+  Box,
+  Divider,
+} from "@mui/material";
 import { red } from "@mui/material/colors";
 import {
   useAppDispatch,
@@ -78,7 +82,10 @@ export const ModalOptions: React.FC = () => {
   }, []);
 
   return (
-    <Modal open={modalOption} onClose={handleCloseModal}>
+    <Modal
+      open={modalOption}
+      onClose={handleCloseModal}
+    >
       <Box sx={styleContenair}>
         <Box sx={styleTop}>
           <Box sx={styleTopLeft}>
@@ -101,7 +108,7 @@ export const ModalOptions: React.FC = () => {
               }}
               onClick={handleCloseModal}
             >
-              <CloseRoundedIcon sx={{ color: red[500] }} />
+              <CloseRounded sx={{ color: red[500] }} />
             </IconButton>
           </Box>
         </Box>

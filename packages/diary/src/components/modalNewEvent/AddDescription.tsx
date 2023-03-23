@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { SxProps, TextField, useTheme } from "@mui/material";
-import FormatAlignLeftRoundedIcon from "@mui/icons-material/FormatAlignLeftRounded";
+import { FormatAlignLeftRounded } from "@mui/icons-material";
 import { useAppDispatch } from "../../utils/hooks/hooksTypedRedux";
 import { modifEventTempDiary } from "../../store/slices/diarysSlice";
 import { css } from "@emotion/react";
@@ -66,7 +66,7 @@ export const AddDescription: React.FC = () => {
   return (
     <div css={addDescriptionCss.mainContenair}>
       <div css={addDescriptionCss.iconContenair}>
-        <FormatAlignLeftRoundedIcon />
+        <FormatAlignLeftRounded />
       </div>
       <div
         css={[

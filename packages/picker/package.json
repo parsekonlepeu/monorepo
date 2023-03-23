@@ -1,15 +1,15 @@
 {
   "name": "@parsekonlepeu/picker",
   "private": false,
-  "version": "0.7.1",
+  "version": "0.7.4",
   "description": "picker date google like",
   "author": {
     "name": "Nicolas Angeon",
     "email": "parsekonlepeu@gmail.com"
   },
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/index",
+  "module": "./dist/index",
+  "types": "./dist/types/index",
   "files": [
     "dist"
   ],
@@ -21,22 +21,23 @@
     "test": "jest",
     "clean": "rimraf ./dist",
     "build:esm": "node ../../script/build.mjs esm",
-    "build:cjs": "node ../../script/build.mjs cjs",
-    "build:types": "tsc -b ./tsconfig.build.json",
-    "build": "pnpm clean && pnpm build:cjs && pnpm build:types && pnpm copyFiles",
+    "build:amd": "node ../../script/build.mjs amd",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build": "pnpm clean && pnpm build:esm && pnpm build:amd && pnpm build:types && pnpm copyFiles",
     "copyFiles": "node ../../script/copyFiles.mjs",
-    "publish": "pnpm publish --access public dist"
+    "publish": "pnpm publish --access public"
   },
   "sideEffects": false,
   "dependencies": {
     "@date-io/luxon": "^2.16.1",
+    "@parsekonlepeu/utils": "workspace:^1.0.1",
     "lodash": "^4.17.21",
     "luxon": "^3.0.3"
   },
   "peerDependencies": {
-    "@parsekonlepeu/utils": "workspace:*",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@parsekonlepeu/utils": "workspace:*",
     "@reduxjs/toolkit": "^1.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Delete } from "@mui/icons-material";
 import { ListRowRenderer } from "react-virtualized";
 import { EventDiary, EventDiaryDelete, RecycleBinDiary } from "../../types";
 import {
@@ -44,7 +44,10 @@ export const rowRenderMaker: (
   ({ index, key, style }) => {
     if (index === 0) {
       return (
-        <div key={key} style={style}>
+        <div
+          key={key}
+          style={style}
+        >
           <div css={forClearCss}>
             <p>
               Les évenements placés dans la corbeille sont supprimés au bout de{" "}
@@ -53,7 +56,7 @@ export const rowRenderMaker: (
             <Button
               sx={{ textTransform: "none" }}
               variant="text"
-              startIcon={<DeleteIcon />}
+              startIcon={<Delete />}
               onClick={delAllEvent}
             >
               Vider la corbeille
@@ -100,7 +103,10 @@ export const rowRenderMaker: (
         dispatch(delClickedEventRecycleBin(diaryCliked));
       };
       return (
-        <div key={key} style={style}>
+        <div
+          key={key}
+          style={style}
+        >
           <EventListContenair
             type="top"
             onClickCheckbox={handleClickCheckboxAll}
@@ -178,7 +184,10 @@ export const rowRenderMaker: (
         );
       };
       return (
-        <div key={key} style={style}>
+        <div
+          key={key}
+          style={style}
+        >
           <EventListContenair
             type="content"
             onClick={handleClickEvent}

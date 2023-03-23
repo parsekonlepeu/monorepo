@@ -6,7 +6,7 @@ import {
   useAppSelector,
 } from "../../utils/hooks/hooksTypedRedux";
 import { SelectColor } from "../selectColor/SelectColor";
-import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
+import { ArrowDropDownRounded } from "@mui/icons-material";
 import { css } from "@emotion/react";
 
 const choiceDiaryColorCss = {
@@ -87,7 +87,7 @@ export const ChoiceDiaryColor: React.FC = () => {
               },
             ]}
           />
-          <ArrowDropDownRoundedIcon />
+          <ArrowDropDownRounded />
         </div>
         <Popover
           open={popChoiceColor}

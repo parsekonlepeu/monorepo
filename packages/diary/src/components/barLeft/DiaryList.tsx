@@ -1,15 +1,19 @@
 import * as React from "react";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import Grow from "@mui/material/Grow";
+import { CloseRounded } from "@mui/icons-material";
+import {
+  Grow,
+  Paper,
+  Typography,
+  FormControlLabel,
+  Checkbox,
+  Divider,
+  SxProps,
+  useTheme,
+} from "@mui/material";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../utils/hooks/hooksTypedRedux";
-import { Divider, SxProps, useTheme } from "@mui/material";
 import { useHover } from "../../utils/hooks/useHover";
 import { css } from "@emotion/react";
 import {
@@ -22,8 +26,6 @@ import {
   deleteDiaryDisplay,
 } from "../../store/slices/diarysSlice";
 import { SelectColor } from "../selectColor/SelectColor";
-import { ContextFunctionManage } from "../../context/context-function-manage";
-import { callFunctionManage } from "../../utils/functions/callFunctionManage";
 
 const stylePaper: SxProps = {
   bgcolor: "white",
@@ -191,7 +193,12 @@ export const DiaryList: React.FC<DiaryListProps> = ({
       {...onHover}
     >
       <FormControlLabel
-        control={<Checkbox checked={check} sx={styleCheckbox} />}
+        control={
+          <Checkbox
+            checked={check}
+            sx={styleCheckbox}
+          />
+        }
         label={
           <Typography
             sx={{
@@ -205,7 +212,10 @@ export const DiaryList: React.FC<DiaryListProps> = ({
         }
       />
       {hover || optOpen ? (
-        <div css={DiaryListCss.buttonOption} onClick={handleClickOpt}>
+        <div
+          css={DiaryListCss.buttonOption}
+          onClick={handleClickOpt}
+        >
           <div css={DiaryListCss.pointButtonOption} />
           <div css={DiaryListCss.pointButtonOption} />
           <div css={DiaryListCss.pointButtonOption} />
@@ -213,11 +223,17 @@ export const DiaryList: React.FC<DiaryListProps> = ({
       ) : null}
       {hover && canUnsubscribe ? (
         <div css={DiaryListCss.buttonUnsub}>
-          <CloseRoundedIcon fontSize="small" onClick={handleClickUnsub} />
+          <CloseRounded
+            fontSize="small"
+            onClick={handleClickUnsub}
+          />
         </div>
       ) : null}
       <Grow in={optOpen}>
-        <Paper elevation={6} sx={stylePaper}>
+        <Paper
+          elevation={6}
+          sx={stylePaper}
+        >
           <div
             css={DiaryListCss.growOptionContenair}
             style={{

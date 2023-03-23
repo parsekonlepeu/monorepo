@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  EventDiary,
-  EventDiaryDisplay,
-  FirstDay,
-  SelectedDate,
-} from "../../../types";
+import { EventDiary, EventDiaryDisplay, SelectedDate } from "../../../types";
 import {
   useAppDispatch,
   useAppSelector,

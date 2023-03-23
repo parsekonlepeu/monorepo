@@ -1,14 +1,17 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
-import Grow from "@mui/material/Grow";
-import Divider from "@mui/material/Divider";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import IconButton from "@mui/material/IconButton";
+import { SettingsOutlined } from "@mui/icons-material";
 import { useAppDispatch } from "../../utils/hooks/hooksTypedRedux";
 import { changeModalRecycleBin } from "../../store/slices/recycleBinSlice";
 import { WithPopper } from "../withPopper/WithPopper";
 import { css } from "@emotion/react";
-import { SxProps, useTheme } from "@mui/material";
+import {
+  SxProps,
+  useTheme,
+  IconButton,
+  Paper,
+  Grow,
+  Divider,
+} from "@mui/material";
 import { useAddHoverCss } from "../../hooks/useAddHoverCss";
 import { refreshOption } from "../../store/slices/optionsSlice";
 
@@ -63,7 +66,10 @@ export const SelectParams: React.FC = () => {
 
   return (
     <div onClick={handleClick}>
-      <WithPopper textDisplay={"Parametre"} top="40px">
+      <WithPopper
+        textDisplay={"Parametre"}
+        top="40px"
+      >
         <IconButton
           aria-label="setting"
           size="small"
@@ -74,7 +80,7 @@ export const SelectParams: React.FC = () => {
             zIndex: 100,
           }}
         >
-          <SettingsOutlinedIcon
+          <SettingsOutlined
             fontSize="small"
             sx={{
               height: "18px",
@@ -136,14 +142,23 @@ export const Params: React.FC = () => {
 
   return (
     <div>
-      <div css={withHoverCss} onClick={handleClickOptions}>
+      <div
+        css={withHoverCss}
+        onClick={handleClickOptions}
+      >
         <p>Paramètres</p>
       </div>
-      <div css={withHoverCss} onClick={handleClickRecycleBin}>
+      <div
+        css={withHoverCss}
+        onClick={handleClickRecycleBin}
+      >
         <p>Corbeille</p>
       </div>
       <Divider />
-      <div css={withHoverCss} onClick={handleDarkMode}>
+      <div
+        css={withHoverCss}
+        onClick={handleDarkMode}
+      >
         <p>Mode sombre</p>
       </div>
     </div>

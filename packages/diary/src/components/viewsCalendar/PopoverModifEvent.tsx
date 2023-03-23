@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Popover, IconButton, useTheme } from "@mui/material";
 import { AnchorOrigin, EventDiary, TransformOrigin } from "../../types";
-import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
-import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
-import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
-import NotesRoundedIcon from "@mui/icons-material/NotesRounded";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import EventRoundedIcon from "@mui/icons-material/EventRounded";
+import {
+  RoomOutlined,
+  DeleteOutlineRounded,
+  ModeEditOutlineOutlined,
+  NotesRounded,
+  CloseRounded,
+  EventRounded,
+} from "@mui/icons-material";
 import { DateTime } from "luxon";
 import { useAppSelector } from "../../utils/hooks/hooksTypedRedux";
 import { WithPopper } from "../withPopper/WithPopper";
@@ -77,7 +79,7 @@ export const PopoverModifEvent: React.FC<PopoverModifEventProps> = ({
         <div css={popoverModifEventCss.topContenair}>
           <WithPopper textDisplay="Modifier l'evenement">
             <IconButton>
-              <ModeEditOutlineOutlinedIcon
+              <ModeEditOutlineOutlined
                 fontSize="small"
                 sx={{ mr: "10px" }}
               />
@@ -85,12 +87,15 @@ export const PopoverModifEvent: React.FC<PopoverModifEventProps> = ({
           </WithPopper>
           <WithPopper textDisplay="Supprimer l 'évenement">
             <IconButton onClick={onClickDelete}>
-              <DeleteOutlineRoundedIcon fontSize="small" sx={{ mr: "10px" }} />
+              <DeleteOutlineRounded
+                fontSize="small"
+                sx={{ mr: "10px" }}
+              />
             </IconButton>
           </WithPopper>
           <WithPopper textDisplay="Fermer">
             <IconButton onClick={onClose}>
-              <CloseRoundedIcon fontSize="small" />
+              <CloseRounded fontSize="small" />
             </IconButton>
           </WithPopper>
         </div>
@@ -107,16 +112,16 @@ export const PopoverModifEvent: React.FC<PopoverModifEventProps> = ({
         />
         {event.place !== "" && (
           <SectionPopoverModifEvent
-            childrens={[<RoomOutlinedIcon />, <p>{event.place}</p>]}
+            childrens={[<RoomOutlined />, <p>{event.place}</p>]}
           />
         )}
         {event.description !== "" && (
           <SectionPopoverModifEvent
-            childrens={[<NotesRoundedIcon />, <p>{event.description}</p>]}
+            childrens={[<NotesRounded />, <p>{event.description}</p>]}
           />
         )}
         <SectionPopoverModifEvent
-          childrens={[<EventRoundedIcon />, <p>{nameDiary}</p>]}
+          childrens={[<EventRounded />, <p>{nameDiary}</p>]}
         />
       </div>
     </Popover>

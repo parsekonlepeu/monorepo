@@ -3,5 +3,5 @@
   "buildCommand": "pnpm run --filter @parsekonlepeu/storybook build-storybook",
   "devCommand": "pnpm run --filter @parsekonlepeu/storybook storybook",
   "framework": null,
-  "outputDirectory": "./storybook-static"
+  "outputDirectory": "./storybook/storybook-static"
 }

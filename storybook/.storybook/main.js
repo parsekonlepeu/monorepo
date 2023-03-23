@@ -17,15 +17,15 @@ module.exports = {
     config.resolve.alias = {
       "@parsekonlepeu/utils": path.resolve(
         __dirname,
-        "../../packages/utils/dist/index"
+        "../../packages/utils/src/index"
       ),
       "@parsekonlepeu/diary": path.resolve(
         __dirname,
-        "../../packages/diary/dist/index"
+        "../../packages/diary/src/index"
       ),
       "@parsekonlepeu/picker": path.resolve(
         __dirname,
-        "../../packages/picker/dist/index"
+        "../../packages/picker/src/index"
       ),
     };
     return config;

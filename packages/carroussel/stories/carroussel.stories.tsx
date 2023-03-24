@@ -1,19 +1,19 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Carroussel3D } from "../src/index";
 // @ts-ignore
-import image1 from "C:/Users/niigiizy/Documents/open-source/monoRepoDiary/packages/carroussel/stories/assets/image1.jpg";
+import image1 from "./assets/image1.jpg";
 // @ts-ignore
-import image2 from "C:/Users/niigiizy/Documents/open-source/monoRepoDiary/packages/carroussel/stories/assets/image2.jpg";
+import image2 from "./assets/image2.jpg";
 // @ts-ignore
-import image3 from "C:/Users/niigiizy/Documents/open-source/monoRepoDiary/packages/carroussel/stories/assets/image3.jpg";
+import image3 from "./assets/image3.jpg";
 // @ts-ignore
-import image4 from "C:/Users/niigiizy/Documents/open-source/monoRepoDiary/packages/carroussel/stories/assets/image4.jpg";
+import image4 from "./assets/image4.jpg";
 // @ts-ignore
-import image5 from "C:/Users/niigiizy/Documents/open-source/monoRepoDiary/packages/carroussel/stories/assets/image5.jpg";
+import image5 from "./assets/image5.jpg";
 // @ts-ignore
-import image6 from "C:/Users/niigiizy/Documents/open-source/monoRepoDiary/packages/carroussel/stories/assets/image6.jpg";
+import image6 from "./assets/image6.jpg";
 // @ts-ignore
-import image7 from "C:/Users/niigiizy/Documents/open-source/monoRepoDiary/packages/carroussel/stories/assets/image7.jpg";
+import image7 from "./assets/image7.jpg";
 
 export default {
   title: "Carroussel3D",

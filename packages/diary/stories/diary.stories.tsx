@@ -5,8 +5,8 @@ import {
   EventDiary,
   FunctionManageDiary,
   ReturnFunctionManageDiary,
-} from "../../packages/diary/src/index";
-import { createData } from "../createData";
+} from "../src/index";
+import { createData } from "./createData";
 
 export default {
   title: "Diary",
@@ -29,7 +29,6 @@ const TemplateWithFakeData: ComponentStory<typeof Calendar> = (args) => (
 const onAddEvent: FunctionManageDiary<EventDiary> = async (data) =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log("add event capturer dans on add event : ", data);
       const r: ReturnFunctionManageDiary = {
         success: true,
         messageSnackbar: "évenement bien sauvegarder",

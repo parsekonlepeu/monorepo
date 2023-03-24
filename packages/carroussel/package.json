@@ -1,0 +1,43 @@
+{
+  "name": "@parsekonlepeu/carroussel3d",
+  "private": false,
+  "version": "0.7.6",
+  "description": "carroussel effet 3d",
+  "author": {
+    "name": "Nicolas Angeon",
+    "email": "parsekonlepeu@gmail.com"
+  },
+  "main": "./dist/index",
+  "module": "./dist/index",
+  "types": "./dist/types/index",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "jest",
+    "clean": "rimraf ./dist",
+    "build:esm": "node ../../script/build.mjs esm",
+    "build:amd": "node ../../script/build.mjs amd",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build": "pnpm clean && pnpm build:esm && pnpm build:amd && pnpm build:types && pnpm copyFiles",
+    "copyFiles": "node ../../script/copyFiles.mjs",
+    "publish": "pnpm publish --access public"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "react-transition-group": "^4.4.5"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.10.4",
+    "@mui/icons-material": "^5.10.6",
+    "@emotion/styled": "^11.10.4",
+    "@reduxjs/toolkit": "^1.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
+  }
+}

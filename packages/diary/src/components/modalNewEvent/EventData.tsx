@@ -8,7 +8,7 @@ import { css } from "@emotion/react";
 
 const styleDivider: SxProps = {
   width: "50%",
-  ml: "35px",
+  // ml: "35px",
 };
 
 const eventDataCss = {

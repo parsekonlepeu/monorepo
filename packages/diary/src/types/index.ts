@@ -10,6 +10,11 @@ export interface OptionsState {
   withRecycledBin: boolean;
   withSearch: boolean;
   withMoveEvent: boolean;
+  canAddEvent: boolean;
+  canRemoveEvent: boolean;
+  canModifEvent: boolean;
+  canAddDiary: boolean;
+  canRemoveDiary: boolean;
   configurableOptions: ConfigurableOptions;
   modalOption: boolean;
   typeEvent: TypeEvent;
@@ -36,7 +41,7 @@ export interface GeneralState {
   multipleDatesDiary: MultipleDates | null;
   selectedDateInitPicker: SelectedDate;
   multipleDatesInitPicker: MultipleDates | null;
-  listServices: Services[];
+  listServices: Services;
   displayMode: DisplayMode;
   leftExtend: boolean;
 }
@@ -126,7 +131,17 @@ export type EventDiary = {
    * Service for service type event
    * @default undefined
    */
-  service?: ServiceName;
+  service?: Service;
+  /**
+   * Category of the service for service type event
+   * @default undefined
+   */
+  serviceCategory?: ServiceCategoryName;
+  /**
+   * name of the booker
+   * @default undefined
+   */
+  bookerName?: string;
 };
 
 export type EventDiaryDisplay = EventDiary & {
@@ -188,20 +203,18 @@ export type SnackbarParams = {
 
 export type ServiceName = string;
 
+export type ServiceCategoryName = string;
+
 export type Service = {
   name: ServiceName;
   duration: number;
-};
-
-export type ServicesCategory = {
-  category: string;
-  list: Service[];
+  price?: number;
 };
 
 export type Services = {
-  name: string;
-  list: ServicesCategory[];
-};
+  category: string;
+  list: Service[];
+}[];
 
 export type AnchorOrigin = {
   vertical: number | "center" | "top" | "bottom";

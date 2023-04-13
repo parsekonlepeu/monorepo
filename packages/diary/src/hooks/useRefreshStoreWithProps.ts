@@ -60,14 +60,54 @@ export const useRefreshStoreWithProps = (props: CalendarProps) => {
   }, [props.typeEvent]);
 
   React.useEffect(() => {
-    props.canMoveEvent &&
+    props.canAddEvent &&
       dispatch(
         refreshOption({
           key: "canMoveEvent",
-          value: props.canMoveEvent,
+          value: props.canAddEvent,
         })
       );
-  }, [props.canMoveEvent]);
+  }, [props.canAddEvent]);
+
+  React.useEffect(() => {
+    props.canRemoveEvent &&
+      dispatch(
+        refreshOption({
+          key: "canMoveEvent",
+          value: props.canRemoveEvent,
+        })
+      );
+  }, [props.canRemoveEvent]);
+
+  React.useEffect(() => {
+    props.canModifEvent &&
+      dispatch(
+        refreshOption({
+          key: "canMoveEvent",
+          value: props.canModifEvent,
+        })
+      );
+  }, [props.canModifEvent]);
+
+  React.useEffect(() => {
+    props.canAddDiary &&
+      dispatch(
+        refreshOption({
+          key: "canMoveEvent",
+          value: props.canAddDiary,
+        })
+      );
+  }, [props.canAddDiary]);
+
+  React.useEffect(() => {
+    props.canRemoveDiary &&
+      dispatch(
+        refreshOption({
+          key: "canMoveEvent",
+          value: props.canRemoveDiary,
+        })
+      );
+  }, [props.canRemoveDiary]);
 
   React.useEffect(() => {
     props.language &&

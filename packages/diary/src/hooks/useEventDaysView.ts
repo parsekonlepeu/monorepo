@@ -29,7 +29,15 @@ export const useDataDaysView = (numbersOfDay: number) => {
   );
   const [reducedAllDay, setReducedAllDay] = React.useState<boolean>(false);
 
-  const [dayOne, setDayOne] = React.useState<DateTime>(DateTime.now());
+  const [dayOne, setDayOne] = React.useState<DateTime>(
+    DateTime.fromObject({
+      ...DateTime.now().toObject(),
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0,
+    })
+  );
   const [daysDisplay, setDaysDisplay] = React.useState<DateTime[]>([]);
   const [eventLessThan_24, setEventLessThan_24] = React.useState<
     EventDiaryDisplay[]
@@ -70,13 +78,20 @@ export const useDataDaysView = (numbersOfDay: number) => {
       let events = getEventDisplay(diarys, diarysDisplay);
       eventTemp && events.push(eventTemp);
       const { moreThan_24, lessThan_24 } = separatesOver_24(events);
-      const firstDateForFilter =
+      const firstDateForFilterBase =
         displayMode === "Week"
           ? (getDayOneWeek(
               DateTime.fromObject(selectedDateDiary),
               firstDayWeek
             ).toObject() as SelectedDate)
           : selectedDateDiary;
+      const firstDateForFilter: SelectedDate = {
+        ...firstDateForFilterBase,
+        hour: 0,
+        minute: 0,
+        second: 0,
+        millisecond: 0,
+      };
       const lessThan_24Filter = filterEventDisplay(
         lessThan_24,
         firstDateForFilter,
@@ -96,6 +111,10 @@ export const useDataDaysView = (numbersOfDay: number) => {
       );
       const moreThen_24Format = formatMoreThan_24(
         sortEventByDateStart([...moreThan_24Filter])
+      );
+      console.log(
+        "lessThan_24FilterDivideFilter",
+        lessThan_24FilterDivideFilter
       );
       setEventLessThan_24(lessThan_24FilterDivideFilter);
       if (eventMoreThan_24Trunc.length !== 0) {
@@ -119,7 +138,12 @@ export const useDataDaysView = (numbersOfDay: number) => {
     if (multipleDatesDiary !== null) {
       setDayOne(DateTime.fromObject(multipleDatesDiary.start));
     } else {
-      const dt = DateTime.fromObject(selectedDateDiary);
+      const dt = DateTime.fromObject({
+        ...selectedDateDiary,
+        hour: 0,
+        minute: 0,
+        second: 0,
+      });
       switch (displayMode) {
         case "Day":
           setDayOne(dt);

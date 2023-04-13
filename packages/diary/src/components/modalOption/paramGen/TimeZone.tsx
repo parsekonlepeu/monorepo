@@ -11,8 +11,8 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../../utils/hooks/hooksTypedRedux";
-import { Select } from "../../select/Select";
-import { DateTime } from "luxon";
+import { GenChoice, Select } from "../../select/Select";
+import { DateTime, Settings } from "luxon";
 import { OnChoice } from "../../../types";
 import { refreshOption } from "../../../store/slices/optionsSlice";
 
@@ -31,15 +31,18 @@ declare namespace Intl {
 const timezones = Intl.supportedValuesOf("timeZone")
   .map((timezone) => {
     const spl = timezone.split("/");
-    return (
+    const display =
       "(GMT" +
       DateTime.now().setZone(timezone).toString().slice(23) +
       ")" +
       " Heure " +
       spl[0] +
       " - " +
-      spl[1]
-    );
+      spl[1];
+    return {
+      name: display,
+      value: timezone,
+    };
   })
   .sort();
 
@@ -64,14 +67,18 @@ export const TimeZone: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleTimeZone: OnChoice<string, void> = React.useCallback((choice) => {
-    dispatch(
-      refreshOption({
-        key: "timeZone",
-        value: choice,
-      })
-    );
-  }, []);
+  const handleTimeZone: OnChoice<GenChoice, void> = React.useCallback(
+    (choice) => {
+      Settings.defaultZone = choice.value;
+      dispatch(
+        refreshOption({
+          key: "timeZone",
+          value: choice.name,
+        })
+      );
+    },
+    []
+  );
 
   const handleCheckedAsk = React.useCallback(() => {
     dispatch(

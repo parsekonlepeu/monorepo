@@ -19,8 +19,7 @@ export default {
   title: "Carroussel3D",
   component: Carroussel3D,
   parameters: {
-    // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-    layout: "fullscreen",
+    layout: "centered",
   },
 } as ComponentMeta<typeof Carroussel3D>;
 
@@ -57,6 +56,6 @@ CarrousselLandscape.args = {
   color: "rgba(100, 255, 218, 1)",
   height: 400,
   width: 800,
-  typeGapHorizontal: 2,
-  typeGapVertical: 3,
+  typeGapHorizontal: 1,
+  typeGapVertical: 4,
 };

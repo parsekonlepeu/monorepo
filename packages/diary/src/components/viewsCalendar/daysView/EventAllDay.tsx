@@ -104,102 +104,103 @@ export const EventAllDay: React.FC<EventAllDayProps> = ({
   );
   const title = event.title === "" ? "(Sans titre)" : event.title;
 
-  const handlePointerDownChangePositon: React.PointerEventHandler<HTMLDivElement> =
-    (e) => {
-      if (e.button === 0 && !popClickRigth) {
-        refLongPress.current = false;
-        const timeOut = setTimeout(() => {
-          refLongPress.current = true;
-          setStartChange(start);
-          refDataChange.current = {
-            start: start,
-          };
-          dispatch(changeFlowChangeEventAllDay(idEvent));
-        }, 500);
-        const element = e.target as HTMLDivElement;
-        const numberColumnInitial = Math.floor(
-          (e.clientX - WIDTH_BAR_LEFT - 43) / widthColumn
-        );
-        const onMoveChangePosition = (eventMove: globalThis.PointerEvent) => {
-          eventMove.preventDefault();
-          clearTimeout(timeOut);
-          dispatch(changeFlowChangeEventAllDay(idEvent));
-          refLongPress.current = true;
-          const numberColumn = Math.floor(
-            (eventMove.clientX - WIDTH_BAR_LEFT - 43) / widthColumn
-          );
-          const diffColumn = numberColumn - numberColumnInitial;
-          const startChange = start.plus({
-            days: diffColumn,
-          });
-          const startChangeEnd = startChange.plus({
-            minutes: event.duration,
-          });
-          const diffDayOneStartChangeEnd = dayOne
-            .diff(startChangeEnd, "days")
-            .toObject().days;
-          const diffLastDayStartChange = dayOne
-            .plus({ days: numbersOfDay - 1 })
-            .diff(startChange, "days")
-            .toObject().days;
-          if (
-            diffDayOneStartChangeEnd &&
-            diffLastDayStartChange &&
-            diffLastDayStartChange > -1 &&
-            diffDayOneStartChangeEnd <= 0
-          ) {
-            setStartChange(startChange);
-            refDataChange.current = {
-              start: startChange,
-            };
-          }
+  const handlePointerDownChangePositon: React.PointerEventHandler<
+    HTMLDivElement
+  > = (e) => {
+    if (e.button === 0 && !popClickRigth) {
+      refLongPress.current = false;
+      const timeOut = setTimeout(() => {
+        refLongPress.current = true;
+        setStartChange(start);
+        refDataChange.current = {
+          start: start,
         };
-        element.addEventListener(
-          "pointerup",
-          (e) => {
-            if (refLongPress.current) {
-              element.removeEventListener("pointermove", onMoveChangePosition);
-              dispatch(changeFlowChangeEventAllDay(null));
-              dispatch(
-                modifEventDiary({
-                  keys: ["start"],
-                  values: [refDataChange.current.start.toObject()],
-                  idDiary: idDiary,
-                  idEvent: idEvent,
-                })
-              );
-              element.releasePointerCapture(e.pointerId);
-            } else {
-              clearTimeout(timeOut);
-              setPopModif(true);
-              element.removeEventListener("pointermove", onMoveChangePosition);
-            }
-          },
-          { once: true }
+        dispatch(changeFlowChangeEventAllDay(idEvent));
+      }, 500);
+      const element = e.target as HTMLDivElement;
+      const numberColumnInitial = Math.floor(
+        (e.clientX - WIDTH_BAR_LEFT - 43) / widthColumn
+      );
+      const onMoveChangePosition = (eventMove: globalThis.PointerEvent) => {
+        eventMove.preventDefault();
+        clearTimeout(timeOut);
+        dispatch(changeFlowChangeEventAllDay(idEvent));
+        refLongPress.current = true;
+        const numberColumn = Math.floor(
+          (eventMove.clientX - WIDTH_BAR_LEFT - 43) / widthColumn
         );
-        element.addEventListener("pointermove", onMoveChangePosition);
-        document.addEventListener(
-          "pointerenter",
-          () => {
-            dispatch(changeFlowChangeEventAllDay(null));
-          },
-          { once: true }
-        );
-        element.setPointerCapture(e.pointerId);
-      } else if (e.button === 2) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (popClickRigth) {
-          setPopClickRigth(false);
-        } else {
-          setPopClickRigth(true);
-          setPosPopClickRigth({
-            x: e.clientX,
-            y: e.clientY,
-          });
+        const diffColumn = numberColumn - numberColumnInitial;
+        const startChange = start.plus({
+          days: diffColumn,
+        });
+        const startChangeEnd = startChange.plus({
+          minutes: event.duration,
+        });
+        const diffDayOneStartChangeEnd = dayOne
+          .diff(startChangeEnd, "days")
+          .toObject().days;
+        const diffLastDayStartChange = dayOne
+          .plus({ days: numbersOfDay - 1 })
+          .diff(startChange, "days")
+          .toObject().days;
+        if (
+          diffDayOneStartChangeEnd &&
+          diffLastDayStartChange &&
+          diffLastDayStartChange > -1 &&
+          diffDayOneStartChangeEnd <= 0
+        ) {
+          setStartChange(startChange);
+          refDataChange.current = {
+            start: startChange,
+          };
         }
+      };
+      element.addEventListener(
+        "pointerup",
+        (e) => {
+          if (refLongPress.current) {
+            element.removeEventListener("pointermove", onMoveChangePosition);
+            dispatch(changeFlowChangeEventAllDay(null));
+            dispatch(
+              modifEventDiary({
+                keys: ["start"],
+                values: [refDataChange.current.start.toObject()],
+                idDiary: idDiary,
+                idEvent: idEvent,
+              })
+            );
+            element.releasePointerCapture(e.pointerId);
+          } else {
+            clearTimeout(timeOut);
+            setPopModif(true);
+            element.removeEventListener("pointermove", onMoveChangePosition);
+          }
+        },
+        { once: true }
+      );
+      element.addEventListener("pointermove", onMoveChangePosition);
+      document.addEventListener(
+        "pointerenter",
+        () => {
+          dispatch(changeFlowChangeEventAllDay(null));
+        },
+        { once: true }
+      );
+      element.setPointerCapture(e.pointerId);
+    } else if (e.button === 2) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (popClickRigth) {
+        setPopClickRigth(false);
+      } else {
+        setPopClickRigth(true);
+        setPosPopClickRigth({
+          x: e.clientX,
+          y: e.clientY,
+        });
       }
-    };
+    }
+  };
 
   const handleContextMenu: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault();

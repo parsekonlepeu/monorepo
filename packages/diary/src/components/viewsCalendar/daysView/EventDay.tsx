@@ -104,6 +104,7 @@ export const EventDay: React.FC<EventDayProps> = ({
     (state) => state.diarys.flowChangeEvent
   );
   const canMoveEvent = useAppSelector((state) => state.options.canMoveEvent);
+  const modalNewEvent = useAppSelector((state) => state.diarys.modalNewEvent);
   const [durationChangeEvent, setDurationChangeEvent] =
     React.useState<number>(duration);
   const [startChangeDuration, setStartChangeDuration] =
@@ -136,8 +137,10 @@ export const EventDay: React.FC<EventDayProps> = ({
 
   const dispatch = useAppDispatch();
 
-  const handlePointerDownChangeHeight: React.PointerEventHandler<HTMLDivElement> =
-    (event) => {
+  const handlePointerDownChangeHeight: React.PointerEventHandler<
+    HTMLDivElement
+  > = (event) => {
+    if (!modalNewEvent) {
       // event.preventDefault()
       event.stopPropagation();
       const element = event.target as HTMLDivElement;
@@ -184,10 +187,13 @@ export const EventDay: React.FC<EventDayProps> = ({
       );
       element.addEventListener("pointermove", onMoveChangeHeight);
       element.setPointerCapture(event.pointerId);
-    };
+    }
+  };
 
-  const handlePointerDownChangePositon: React.PointerEventHandler<HTMLDivElement> =
-    (e) => {
+  const handlePointerDownChangePositon: React.PointerEventHandler<
+    HTMLDivElement
+  > = (e) => {
+    if (!modalNewEvent) {
       if (e.button === 0 && !popClickRigth) {
         refLongPress.current = false;
         const timeOut = setTimeout(() => {
@@ -332,7 +338,8 @@ export const EventDay: React.FC<EventDayProps> = ({
           });
         }
       }
-    };
+    }
+  };
 
   const handleContextMenu: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault();

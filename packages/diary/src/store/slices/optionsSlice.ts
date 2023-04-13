@@ -17,6 +17,11 @@ const initialState: OptionsState = {
   withRecycledBin: true,
   withSearch: true,
   withMoveEvent: true,
+  canAddEvent: true,
+  canRemoveEvent: true,
+  canModifEvent: true,
+  canAddDiary: true,
+  canRemoveDiary: true,
   configurableOptions: {
     language: true,
     country: true,

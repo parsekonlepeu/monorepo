@@ -24,11 +24,13 @@ import {
   FunctionManageDiary,
   RecycleBinDiary,
   Service,
+  Services,
   TypeEvent,
 } from "./types";
 import { css, Global } from "@emotion/react";
 import { HEIGHT_TOP } from "./utils/constants";
 import { useRefreshStoreWithProps } from "./hooks/useRefreshStoreWithProps";
+import { ModalWarningNotDiary } from "./components/modalWarningNotDiarys/ModalWarningNotDiary";
 
 const calendarCss = {
   mainContenair: css({
@@ -53,14 +55,10 @@ const calendarCss = {
 };
 
 export interface CalendarProps {
-  withRecycledBin?: boolean;
-  withSearch?: boolean;
-  withMoveEvent?: boolean;
   configurableOptions?: ConfigurableOptions;
   diarys?: Diary[];
   recycledBin?: RecycleBinDiary[];
   typeEvent?: TypeEvent;
-  canMoveEvent?: boolean;
   language?: string;
   country?: string;
   dateFormat?: "JJ/MM/YYYY" | "MM/JJ/YYYY" | "YYYY-MM-JJ";
@@ -70,7 +68,15 @@ export interface CalendarProps {
   firstDayWeek?: FirstDay;
   customizeView?: CustomizeView;
   askCurrentPos?: boolean;
-  listServices?: Service[];
+  listServices?: Services;
+  canAddEvent?: boolean;
+  canRemoveEvent?: boolean;
+  canModifEvent?: boolean;
+  canAddDiary?: boolean;
+  canRemoveDiary?: boolean;
+  withRecycledBin?: boolean;
+  withSearch?: boolean;
+  withMoveEvent?: boolean;
   onAddEvent?: FunctionManageDiary<EventDiary>;
   onDelEvent?: FunctionManageDiary<EventDiary>;
   onChangeEvent?: FunctionManageDiary<EventDiary>;
@@ -112,6 +118,7 @@ const Container: React.FC<CalendarProps> = (props) => {
       <LeftOpenClose />
       <ButtonNewEvent />
       <ModalRecyclebin />
+      <ModalWarningNotDiary />
       <SnackBarInfo />
     </div>
   );
@@ -124,12 +131,12 @@ export const Calendar: React.FC<CalendarProps> = (props: CalendarProps) => {
   const valueContext = {
     onAddEvent: props.onAddEvent,
     onDelEvent: props.onDelEvent,
-    onRestoreEvent: props.onRestoreEvent,
     onChangeEvent: props.onChangeEvent,
     onAddDiary: props.onAddDiary,
     onDelDiary: props.onDelDiary,
     onChangeDiary: props.onChangeDiary,
     onChangeOptions: props.onChangeOptions,
+    onRestoreEvent: props.onRestoreEvent,
   };
 
   return (

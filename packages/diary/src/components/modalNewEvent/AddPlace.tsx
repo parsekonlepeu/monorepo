@@ -4,6 +4,11 @@ import { AddLocationAltOutlined } from "@mui/icons-material";
 import { SxProps, TextField, useTheme } from "@mui/material";
 import { css } from "@emotion/react";
 import { WIDTH_MODAL_NEW_EVENT } from "../../utils/constants";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../utils/hooks/hooksTypedRedux";
+import { modifEventTempDiary } from "../../store/slices/diarysSlice";
 
 interface IFormInputs {
   placeEvent: string;
@@ -40,6 +45,8 @@ const addPlaceCss = {
 };
 
 export const AddPlace: React.FC = () => {
+  const eventTemp = useAppSelector((state) => state.diarys.eventTemp);
+  const dispatch = useAppDispatch();
   const theme = useTheme();
   const {
     control,
@@ -67,7 +74,7 @@ export const AddPlace: React.FC = () => {
         <Controller
           name="placeEvent"
           control={control}
-          defaultValue={""}
+          defaultValue={eventTemp?.place}
           rules={{
             maxLength: {
               value: 100,
@@ -79,6 +86,16 @@ export const AddPlace: React.FC = () => {
               <TextField
                 id="textefield-choice-place-new-event"
                 label="Ajouter un lieu"
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  dispatch(
+                    modifEventTempDiary({
+                      keys: ["place"],
+                      values: [e.target.value],
+                    })
+                  );
+                }}
+                value={eventTemp?.place}
                 // {...field}
                 size="small"
                 error={errors.placeEvent ? true : false}

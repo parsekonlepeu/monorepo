@@ -29,7 +29,7 @@ const generalSlice: Slice<GeneralState> = createSlice({
   name: "general",
   initialState: initialState,
   reducers: {
-    refreshListServices: (state, action: PayloadAction<Services[]>) => {
+    refreshListServices: (state, action: PayloadAction<Services>) => {
       state.listServices = action.payload;
     },
     changeSnackbarParams: (state, action: PayloadAction<SnackbarParams>) => {

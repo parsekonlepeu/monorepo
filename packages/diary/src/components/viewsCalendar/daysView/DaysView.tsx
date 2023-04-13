@@ -285,12 +285,9 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
                 css={daysViewCss.clickAllDayRigthColumn}
                 id={`for-click-all-day-rigth-column-${index}`}
                 onMouseDown={clickColumn}
-                key={index.toString()}
+                key={day.toString()}
               >
-                <div
-                  css={daysViewCss.topDayView}
-                  key={index.toString()}
-                >
+                <div css={daysViewCss.topDayView}>
                   <div css={daysViewCss.topDay}>
                     <div css={daysViewCss.nameDay}>
                       <p
@@ -413,17 +410,17 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
                 css={{ flex: 1 }}
                 id={`column-day-for-click-${index}`}
                 onMouseDown={clickColumn}
-                key={index.toString()}
+                key={day.toString()}
               />
             );
           })}
-          {eventLessThan_24.map((event, index) => {
+          {eventLessThan_24.map((event) => {
             const colorDiary = diarys.find(
               (diary) => diary.id === event.idDiary
             )?.color;
             return (
               <EventDay
-                key={index.toString()}
+                key={event.id}
                 widthColumn={widthColumn}
                 numberParts={event.numberParts}
                 numbersOfDay={numbersOfDay}

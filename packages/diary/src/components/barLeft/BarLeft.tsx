@@ -14,7 +14,7 @@ const BarLeftCss = {
   mainContenair: css({
     position: "absolute",
     width: `${WIDTH_BAR_LEFT}px`,
-    top: `${HEIGHT_TOP}px`,
+    top: `${HEIGHT_TOP + 5}px`,
     height: `calc(100vh - ${HEIGHT_TOP}px)`,
     transition: "0.2s",
     padding: "0px",
@@ -31,8 +31,9 @@ const BarLeftCss = {
 
 const DiarySelectCss = {
   mainContenair: css({
-    width: `${WIDTH_BAR_LEFT}px`,
+    width: `${WIDTH_BAR_LEFT - 20}px`,
     marginRight: "auto",
+    marginLeft: "10px",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",

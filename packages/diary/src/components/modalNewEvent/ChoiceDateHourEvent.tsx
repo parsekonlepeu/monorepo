@@ -47,7 +47,15 @@ const choiceDateHourEventCss = {
   }),
 };
 
-export const ChoiceDateHourEvent: React.FC = () => {
+type ChoiceDateHourEventProps = {
+  withoutSelectAllDay?: boolean;
+  withoutDateEnd?: boolean;
+};
+
+export const ChoiceDateHourEvent: React.FC<ChoiceDateHourEventProps> = ({
+  withoutSelectAllDay,
+  withoutDateEnd,
+}) => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const eventTemp = useAppSelector((state) => state.diarys.eventTemp);
@@ -66,34 +74,43 @@ export const ChoiceDateHourEvent: React.FC = () => {
           day: data.selectedDate.day,
           year: data.selectedDate.year,
         };
-        const diff = eventTempEndDt
-          .diff(DateTime.fromObject(newDate), "minutes")
-          .toObject().minutes;
-        if (diff && diff < 0) {
+        if (withoutDateEnd) {
           dispatch(
             modifEventTempDiary({
-              keys: ["start", "duration"],
-              values: [newDate, 15],
+              keys: ["start"],
+              values: [newDate],
             })
           );
         } else {
-          const diffNewStartOldStart = DateTime.fromObject(newDate)
-            .diff(eventTempStartDt, "minutes")
+          const diff = eventTempEndDt
+            .diff(DateTime.fromObject(newDate), "minutes")
             .toObject().minutes;
-          const diffAllDayNewStartOldStart = DateTime.fromObject(newDate)
-            .diff(eventTempStartDt, "days")
-            .toObject().days;
-          diffNewStartOldStart &&
-            diffAllDayNewStartOldStart &&
+          if (diff && diff < 0) {
             dispatch(
               modifEventTempDiary({
                 keys: ["start", "duration"],
-                values: [newDate, eventTemp.duration - diffNewStartOldStart],
+                values: [newDate, 15],
               })
             );
+          } else {
+            const diffNewStartOldStart = DateTime.fromObject(newDate)
+              .diff(eventTempStartDt, "minutes")
+              .toObject().minutes;
+            const diffAllDayNewStartOldStart = DateTime.fromObject(newDate)
+              .diff(eventTempStartDt, "days")
+              .toObject().days;
+            diffNewStartOldStart &&
+              diffAllDayNewStartOldStart &&
+              dispatch(
+                modifEventTempDiary({
+                  keys: ["start", "duration"],
+                  values: [newDate, eventTemp.duration - diffNewStartOldStart],
+                })
+              );
+          }
         }
       },
-      [eventTemp, eventTempEndDt, eventTempStartDt]
+      [eventTemp, eventTempEndDt, eventTempStartDt, withoutDateEnd]
     );
 
     const handleChangeDateEnd: OnChangeDatePicker = React.useCallback(
@@ -158,10 +175,11 @@ export const ChoiceDateHourEvent: React.FC = () => {
                 eventTempStartDt={eventTempStartDt}
                 eventTempEndDt={eventTempEndDt}
                 eventTempDuration={eventTemp.duration}
+                startWithoutEnd={withoutDateEnd}
               />
             ) : null}
-            {eventTemp.type != "service" ? <p>{"–"}</p> : null}
-            {!eventTemp.allDay && eventTemp.type != "service" ? (
+            {!withoutDateEnd ? <p>{"–"}</p> : null}
+            {!eventTemp.allDay && !withoutDateEnd ? (
               <ButtonChoiceHour
                 endOrStart="end"
                 eventTempStartDt={eventTempStartDt}
@@ -169,7 +187,7 @@ export const ChoiceDateHourEvent: React.FC = () => {
                 eventTempDuration={eventTemp.duration}
               />
             ) : null}
-            {eventTemp.type != "service" ? (
+            {!withoutDateEnd ? (
               <ButtonChoiceDate
                 dateDisplay={eventTempEndDt}
                 handleChange={handleChangeDateEnd}
@@ -177,25 +195,27 @@ export const ChoiceDateHourEvent: React.FC = () => {
               />
             ) : null}
           </div>
-          <div css={choiceDateHourEventCss.checkboxContenair}>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={eventTemp.allDay}
-                  onClick={handleClickCheckbox}
-                  sx={{
-                    fontSize: "11px",
-                    my: "0px",
-                    py: "0px",
-                  }}
-                />
-              }
-              label="Toute la journée"
-              sx={{
-                fontSize: "11px",
-              }}
-            />
-          </div>
+          {!withoutSelectAllDay ? (
+            <div css={choiceDateHourEventCss.checkboxContenair}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={eventTemp.allDay}
+                    onClick={handleClickCheckbox}
+                    sx={{
+                      fontSize: "11px",
+                      my: "0px",
+                      py: "0px",
+                    }}
+                  />
+                }
+                label="Toute la journée"
+                sx={{
+                  fontSize: "11px",
+                }}
+              />
+            </div>
+          ) : null}
         </div>
       </div>
     );

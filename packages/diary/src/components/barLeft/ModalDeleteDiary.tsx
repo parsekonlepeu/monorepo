@@ -125,7 +125,10 @@ export const ModalDeleteDiary = React.forwardRef<HTMLDivElement>(
               >
                 Annuler
               </Button>
-              <Button onClick={handleToStep_2} sx={buttonStyle}>
+              <Button
+                onClick={handleToStep_2}
+                sx={buttonStyle}
+              >
                 Supprimmer l'agenda
               </Button>
             </div>

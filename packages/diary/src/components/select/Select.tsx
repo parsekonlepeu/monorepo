@@ -11,7 +11,6 @@ const styleContenaire: SxProps = {
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
-  cursor: "pointer",
   borderRadius: "5px",
 };
 
@@ -35,6 +34,13 @@ const styleBoxChoice: SxProps = {
   cursor: "pointer",
   px: "15px",
   minWidth: "300px",
+  display: "flex",
+  justifyContent: "space-between",
+};
+
+export type GenChoice = {
+  name: string;
+  value: any;
 };
 
 interface SelectProps {
@@ -42,8 +48,12 @@ interface SelectProps {
   title: string;
   value: string;
   my: string;
-  choices: Choices<string | number | InfoPays>;
+  choices: Choices<
+    string | number | InfoPays | GenChoice | Record<string, string | number>
+  >;
   onChoice: OnChoice<any, any>;
+  toRight?: string[][];
+  disable?: boolean;
 }
 
 export const Select: React.FC<SelectProps> = ({
@@ -53,6 +63,8 @@ export const Select: React.FC<SelectProps> = ({
   my,
   choices,
   onChoice,
+  toRight,
+  disable,
 }) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement | null>(null);
@@ -60,13 +72,15 @@ export const Select: React.FC<SelectProps> = ({
   const handleClick: React.MouseEventHandler<HTMLDivElement> =
     React.useCallback(
       (event) => {
-        if (anchorEl) {
-          setAnchorEl(null);
-        } else {
-          setAnchorEl(event.currentTarget);
+        if (!disable) {
+          if (anchorEl) {
+            setAnchorEl(null);
+          } else {
+            setAnchorEl(event.currentTarget);
+          }
         }
       },
-      [anchorEl]
+      [anchorEl, disable]
     );
   const open = Boolean(anchorEl);
   return (
@@ -75,6 +89,7 @@ export const Select: React.FC<SelectProps> = ({
         width: width,
         bgcolor: theme.google.textfieldSurface,
         my: my,
+        cursor: disable ? "default" : "pointer",
         ...styleContenaire,
       }}
       onClick={handleClick}
@@ -82,7 +97,9 @@ export const Select: React.FC<SelectProps> = ({
       <Box>
         <Typography
           sx={{
-            color: theme.google.onSurfaceVariant,
+            color: disable
+              ? theme.google.hairlineHover
+              : theme.google.onSurfaceVariant,
             ...styleLabel,
           }}
         >
@@ -91,7 +108,14 @@ export const Select: React.FC<SelectProps> = ({
         <Typography sx={styleValue}>{value}</Typography>
       </Box>
       <Box sx={styleBoxArrow}>
-        <ArrowDropDownOutlined sx={{ fontSize: "18px" }} />
+        <ArrowDropDownOutlined
+          sx={{
+            fontSize: "18px",
+            color: disable
+              ? theme.google.hairlineHover
+              : theme.google.onSurfaceVariant,
+          }}
+        />
       </Box>
       <Popover
         open={open}
@@ -106,12 +130,9 @@ export const Select: React.FC<SelectProps> = ({
             const handleClickChoice: React.MouseEventHandler<
               HTMLDivElement
             > = () => {
-              const c =
-                typeof choice === "string" || typeof choice === "number"
-                  ? choice
-                  : choice.name;
-              onChoice(c);
+              onChoice(choice);
             };
+            console.log(choice);
             return (
               <Box
                 sx={{
@@ -128,6 +149,20 @@ export const Select: React.FC<SelectProps> = ({
                     ? choice
                     : choice.name}
                 </Typography>
+                {toRight ? (
+                  <Typography
+                    sx={{
+                      fontSize: "14px",
+                      fontWeight: "500",
+                      color: theme.google.hairlineHover,
+                    }}
+                  >
+                    {toRight
+                      // @ts-ignore
+                      .map((item) => choice[item[0]] + item[1])
+                      .join(" / ")}
+                  </Typography>
+                ) : null}
               </Box>
             );
           })}

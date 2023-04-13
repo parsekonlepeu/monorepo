@@ -5,6 +5,7 @@ import {
   EventDiary,
   FunctionManageDiary,
   ReturnFunctionManageDiary,
+  Services,
 } from "../src/index";
 import { createData } from "./createData";
 
@@ -91,6 +92,68 @@ const onChangeDiary: FunctionManageDiary<Diary> = async (data) =>
       resolve(r);
     }, 1000);
   });
+const listServices: Services = [
+  {
+    category: "coiffure",
+    list: [
+      {
+        name: "boule a z",
+        duration: 30,
+        price: 15,
+      },
+      {
+        name: "dégradé",
+        duration: 15,
+        price: 20,
+      },
+      {
+        name: "couleur",
+        duration: 45,
+        price: 30,
+      },
+      {
+        name: "coupe au bol",
+        duration: 60,
+        price: 10,
+      },
+      {
+        name: "shampoing",
+        duration: 15,
+        price: 10,
+      },
+    ],
+  },
+  {
+    category: "épilation",
+    list: [
+      {
+        name: "main",
+        duration: 30,
+        price: 25,
+      },
+      {
+        name: "bras",
+        duration: 15,
+        price: 20,
+      },
+      {
+        name: "jambe",
+        duration: 45,
+        price: 30,
+      },
+      {
+        name: "front",
+        duration: 60,
+        price: 10,
+      },
+      {
+        name: "cuisse",
+        duration: 15,
+        price: 15,
+      },
+    ],
+  },
+];
 
 const fakeData = createData();
 
@@ -114,4 +177,5 @@ WithFakeData.args = {
   onChangeDiary: onChangeDiary,
   diarys: fakeData.diarys,
   recycledBin: fakeData.recycledBin,
+  listServices: listServices,
 };

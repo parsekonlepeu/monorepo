@@ -15,7 +15,7 @@ const styleTextField: SxProps = {
   width: "calc(100% - 80px)",
 };
 
-const addDescriptionCss = {
+const addBookerNameCss = {
   mainContenair: css({
     display: "flex",
     flexDirection: "row",
@@ -44,7 +44,7 @@ interface IFormInputs {
   description: string;
 }
 
-export const AddDescription: React.FC = () => {
+export const AddBookerName: React.FC = () => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const eventTemp = useAppSelector((state) => state.diarys.eventTemp);
@@ -61,20 +61,20 @@ export const AddDescription: React.FC = () => {
   > = (event) => {
     dispatch(
       modifEventTempDiary({
-        keys: ["description"],
+        keys: ["bookerName"],
         values: [event.target.value],
       })
     );
   };
 
   return (
-    <div css={addDescriptionCss.mainContenair}>
-      <div css={addDescriptionCss.iconContenair}>
+    <div css={addBookerNameCss.mainContenair}>
+      <div css={addBookerNameCss.iconContenair}>
         <FormatAlignLeftRounded />
       </div>
       <div
         css={[
-          addDescriptionCss.descriptionContenair,
+          addBookerNameCss.descriptionContenair,
           {
             color: theme.google.onSurfaceVariantAgm,
             "& p": {
@@ -86,26 +86,24 @@ export const AddDescription: React.FC = () => {
         <Controller
           name="description"
           control={control}
-          defaultValue={eventTemp?.description}
+          defaultValue={eventTemp?.bookerName}
           rules={{
             maxLength: {
-              value: 5,
-              message: "maximum 500 caractères pour la description",
+              value: 20,
+              message: "maximum 20 caractères pour la description",
             },
           }}
           render={(props) => {
             return (
               <TextField
-                id="textfeild-description-new-event"
-                multiline
-                rows={4}
-                label="Ajouter une description"
+                id="textfeild-bookername-new-event"
+                label="Nom du client"
                 // {...props}
                 onChange={(value) => {
                   props.field.onChange(value);
                   handleChange(value);
                 }}
-                value={eventTemp?.description}
+                value={eventTemp?.bookerName}
                 size="small"
                 type={"text"}
                 error={errors.description ? true : false}

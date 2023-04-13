@@ -33,23 +33,6 @@ import { css } from "@emotion/react";
 import { WIDTH_MODAL_NEW_EVENT } from "../../utils/constants";
 import { computStyleToNumber } from "../../utils/functions/computStyleToNumber";
 
-interface IFormInputs {
-  titleEvent: string;
-}
-
-const styleTextField: SxProps = {
-  my: "15px",
-  ml: "70px",
-  width: "calc(100% - 80px)",
-  "& .MuiInputBase-input": {
-    borderRadius: "5px",
-    color: "black",
-    fontSize: "22px",
-    fontWeight: 600,
-    opacity: 1,
-  },
-};
-
 const stylePaper: SxProps = {
   display: "flex",
   flexDirection: "column",
@@ -104,14 +87,6 @@ export const ModalNewEvent: React.FC<ModalNewEventProps> = ({ posModal }) => {
 
   const dispatch = useAppDispatch();
   const eventTemp = useAppSelector((state) => state.diarys.eventTemp);
-
-  const {
-    control,
-    reset,
-    formState: { errors },
-  } = useForm<IFormInputs>({
-    mode: "onBlur",
-  });
 
   const handleClickQuitModal: EventListener = React.useCallback((e) => {
     e.preventDefault();
@@ -237,7 +212,6 @@ export const ModalNewEvent: React.FC<ModalNewEventProps> = ({ posModal }) => {
               color: theme.palette.success.main,
             })
           );
-          reset();
         } else {
           dispatch(
             changeSnackbarParams({
@@ -293,33 +267,7 @@ export const ModalNewEvent: React.FC<ModalNewEventProps> = ({ posModal }) => {
           css={modalNewEventCss.bottomContenair}
           onMouseDown={stopPropagation}
         >
-          <Controller
-            name="titleEvent"
-            control={control}
-            defaultValue={""}
-            rules={{
-              maxLength: {
-                value: 20,
-                message: "maximum 20 caractères pour le nom",
-              },
-            }}
-            render={({ field }) => {
-              return (
-                <TextField
-                  id="textfield-title-new-event"
-                  autoFocus
-                  placeholder="Ajouter un titre"
-                  {...field}
-                  size="small"
-                  error={errors.titleEvent ? true : false}
-                  sx={styleTextField}
-                  variant="standard"
-                />
-              );
-            }}
-          />
           <ToggleModalEvent />
-          <Divider sx={{ width: "50%", ml: "35px" }} />
           <div css={modalNewEventCss.buttonContenair}>
             <Button
               variant="contained"

@@ -11,6 +11,7 @@ type ButtonChoiceHourProps = {
   eventTempStartDt: DateTime;
   eventTempEndDt: DateTime;
   eventTempDuration: number;
+  startWithoutEnd?: boolean;
 };
 
 export const ButtonChoiceHour: React.FC<ButtonChoiceHourProps> = ({
@@ -18,6 +19,7 @@ export const ButtonChoiceHour: React.FC<ButtonChoiceHourProps> = ({
   eventTempStartDt,
   eventTempEndDt,
   eventTempDuration,
+  startWithoutEnd,
 }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
@@ -27,6 +29,26 @@ export const ButtonChoiceHour: React.FC<ButtonChoiceHourProps> = ({
   const dispatch = useAppDispatch();
 
   const refButtonHour = React.useRef<HTMLButtonElement | null>(null);
+
+  const makeOnClickStartWithoutEnd = React.useCallback(
+    (time: TimeType): (() => void) => {
+      return () => {
+        const newDateStart = DateTime.fromISO(time.time24).set({
+          year: eventTempStartDt.year,
+          month: eventTempStartDt.month,
+          day: eventTempStartDt.day,
+        });
+        dispatch(
+          modifEventTempDiary({
+            keys: ["start"],
+            values: [newDateStart.toObject()],
+          })
+        );
+        onClose();
+      };
+    },
+    [eventTempStartDt, eventTempEndDt, eventTempDuration]
+  );
 
   const makeOnClickStart = React.useCallback(
     (time: TimeType): (() => void) => {
@@ -102,7 +124,13 @@ export const ButtonChoiceHour: React.FC<ButtonChoiceHourProps> = ({
         </p>
       </button>
       <PopoverChoiceHour
-        makeOnClick={endOrStart === "start" ? makeOnClickStart : makeOnClickEnd}
+        makeOnClick={
+          endOrStart === "start"
+            ? startWithoutEnd
+              ? makeOnClickStartWithoutEnd
+              : makeOnClickStart
+            : makeOnClickEnd
+        }
         isOpen={isOpen}
         anchorEl={refButtonHour.current as HTMLButtonElement}
         onClose={onClose}

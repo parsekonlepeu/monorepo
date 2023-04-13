@@ -32,6 +32,8 @@ const choiceDiaryColorCss = {
   popoverContenair: css({
     display: "flex",
     flexDirection: "column",
+    marginRight: "10px",
+    marginBottom: "10px",
   }),
 };
 

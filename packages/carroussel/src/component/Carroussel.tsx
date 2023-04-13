@@ -51,6 +51,7 @@ export const Carroussel3D: React.FC<CarrousselProps> = ({
   color,
 }) => {
   const arrayForMap = React.useRef(new Array(7).fill(null));
+
   const { gapHorizontal, spacebetweenRow } = useGap(
     typeGapHorizontal,
     typeGapVertical,

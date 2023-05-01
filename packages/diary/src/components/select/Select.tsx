@@ -132,7 +132,6 @@ export const Select: React.FC<SelectProps> = ({
             > = () => {
               onChoice(choice);
             };
-            console.log(choice);
             return (
               <Box
                 sx={{

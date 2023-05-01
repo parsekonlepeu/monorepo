@@ -112,10 +112,6 @@ export const useDataDaysView = (numbersOfDay: number) => {
       const moreThen_24Format = formatMoreThan_24(
         sortEventByDateStart([...moreThan_24Filter])
       );
-      console.log(
-        "lessThan_24FilterDivideFilter",
-        lessThan_24FilterDivideFilter
-      );
       setEventLessThan_24(lessThan_24FilterDivideFilter);
       if (eventMoreThan_24Trunc.length !== 0) {
         setEventMoreThan_24(moreThen_24Format.slice(0, 2));

@@ -74,11 +74,13 @@ export const ChoiceDateHourEvent: React.FC<ChoiceDateHourEventProps> = ({
           day: data.selectedDate.day,
           year: data.selectedDate.year,
         };
+        const newUnixInteger: number =
+          DateTime.fromObject(newDate).toUnixInteger();
         if (withoutDateEnd) {
           dispatch(
             modifEventTempDiary({
-              keys: ["start"],
-              values: [newDate],
+              keys: ["start", "startUnixInteger"],
+              values: [newDate, newUnixInteger],
             })
           );
         } else {
@@ -88,8 +90,8 @@ export const ChoiceDateHourEvent: React.FC<ChoiceDateHourEventProps> = ({
           if (diff && diff < 0) {
             dispatch(
               modifEventTempDiary({
-                keys: ["start", "duration"],
-                values: [newDate, 15],
+                keys: ["start", "duration", "startUnixInteger"],
+                values: [newDate, 15, newUnixInteger],
               })
             );
           } else {
@@ -103,8 +105,12 @@ export const ChoiceDateHourEvent: React.FC<ChoiceDateHourEventProps> = ({
               diffAllDayNewStartOldStart &&
               dispatch(
                 modifEventTempDiary({
-                  keys: ["start", "duration"],
-                  values: [newDate, eventTemp.duration - diffNewStartOldStart],
+                  keys: ["start", "duration", "startUnixInteger"],
+                  values: [
+                    newDate,
+                    eventTemp.duration - diffNewStartOldStart,
+                    newUnixInteger,
+                  ],
                 })
               );
           }

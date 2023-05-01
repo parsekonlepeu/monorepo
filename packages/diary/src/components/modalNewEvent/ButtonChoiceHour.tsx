@@ -40,8 +40,8 @@ export const ButtonChoiceHour: React.FC<ButtonChoiceHourProps> = ({
         });
         dispatch(
           modifEventTempDiary({
-            keys: ["start"],
-            values: [newDateStart.toObject()],
+            keys: ["start", "startUnixInteger"],
+            values: [newDateStart.toObject(), newDateStart.toUnixInteger()],
           })
         );
         onClose();
@@ -68,8 +68,12 @@ export const ButtonChoiceHour: React.FC<ButtonChoiceHourProps> = ({
           diff &&
             dispatch(
               modifEventTempDiary({
-                keys: ["start", "duration"],
-                values: [newDateStart.toObject(), eventTempDuration + diff],
+                keys: ["start", "duration", "startUnixInteger"],
+                values: [
+                  newDateStart.toObject(),
+                  eventTempDuration + diff,
+                  newDateStart.toUnixInteger(),
+                ],
               })
             );
         }

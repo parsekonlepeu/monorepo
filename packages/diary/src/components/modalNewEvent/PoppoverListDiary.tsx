@@ -24,10 +24,6 @@ const popoverListDiaryCss = {
     cursor: "pointer",
   }),
   popoverContenair: css({
-    // paddingTop: "10px",
-    // paddingLeft: "10px",
-    // paddingRight: "20px",
-    // paddingBottom: "20px",
     overflow: "hidden",
   }),
   choicePopover: css({

@@ -130,7 +130,6 @@ const PickerContenair: React.FC = () => {
   const dispatch = usePickerDispatch();
 
   React.useEffect(() => {
-    console.log("selectedDate dans picker : ", selectedDate);
     dispatch(changeSelectedDatePicker(selectedDate));
     canSwipe &&
       dispatch(

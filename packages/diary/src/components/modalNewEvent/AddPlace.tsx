@@ -87,7 +87,6 @@ export const AddPlace: React.FC = () => {
                 id="textefield-choice-place-new-event"
                 label="Ajouter un lieu"
                 onChange={(e) => {
-                  console.log(e.target.value);
                   dispatch(
                     modifEventTempDiary({
                       keys: ["place"],

@@ -1,7 +1,11 @@
 import { css } from "@emotion/react";
 import * as React from "react";
+import { changeCanSaveEventTemp } from "../../store/slices/diarysSlice";
 import { checkOverlap } from "../../utils/functions/checkOverlap";
-import { useAppSelector } from "../../utils/hooks/hooksTypedRedux";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../utils/hooks/hooksTypedRedux";
 import { AddBookerName } from "./AddBookerName";
 import { AddDescription } from "./AddDescription";
 import { AddPlace } from "./AddPlace";
@@ -19,8 +23,12 @@ const serviceDataCss = {
 export const ServiceData: React.FC = () => {
   const eventTemp = useAppSelector((state) => state.diarys.eventTemp);
   const diarys = useAppSelector((state) => state.diarys.diarys);
+  const dispatch = useAppDispatch();
   React.useEffect(() => {
-    eventTemp && checkOverlap(eventTemp, diarys);
+    if (eventTemp) {
+      const overlap = checkOverlap(eventTemp, diarys);
+      dispatch(changeCanSaveEventTemp(overlap));
+    }
   }, [eventTemp?.service, eventTemp?.serviceCategory, eventTemp?.start]);
   return (
     <div css={serviceDataCss.mainContenair}>

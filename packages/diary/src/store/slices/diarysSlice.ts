@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
-import { Diary, DiarysState, EventDiary, PosModal } from "../../types";
+import {
+  Diary,
+  DiarysState,
+  EventDiary,
+  PosModal,
+  TagModalNewEvent,
+} from "../../types";
 
 const initialState: DiarysState = {
   flowChangeEvent: null,
@@ -8,12 +14,14 @@ const initialState: DiarysState = {
   diarysDisplay: [],
   diarys: [],
   eventTemp: undefined,
+  canSaveEventTemp: true,
   eventWeekOnChange: null,
   flowMoveModalEvent: false,
   modalUnsubscribeDiary: false,
   idDiaryForDelete: null,
   modalChoiceColor: false,
   idDiarysModalChoiceColor: "",
+  tagModalNewEvent: "event",
   modalNewEvent: false,
   modalWarningNotDiarys: false,
   modalNewEventIsInAnchor: false,
@@ -28,6 +36,15 @@ const diarysSlice: Slice<DiarysState> = createSlice({
   name: "events",
   initialState: initialState,
   reducers: {
+    changeTagModalNewEvent: (
+      state,
+      action: PayloadAction<TagModalNewEvent>
+    ) => {
+      state.tagModalNewEvent = action.payload;
+    },
+    changeCanSaveEventTemp: (state, action: PayloadAction<boolean>) => {
+      state.canSaveEventTemp = action.payload;
+    },
     changeIdDiaryForDelete: (state, action: PayloadAction<string | null>) => {
       state.idDiaryForDelete = action.payload;
     },
@@ -188,6 +205,8 @@ const diarysSlice: Slice<DiarysState> = createSlice({
 });
 
 export const {
+  changeTagModalNewEvent,
+  changeCanSaveEventTemp,
   refreshDiarys,
   addEventMultiple,
   changeIdDiaryForDelete,

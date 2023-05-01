@@ -67,6 +67,9 @@ const modalNewEventCss = {
     justifyContent: "flex-end",
     padding: "10px",
   }),
+  textError: css({
+    marginRight: "20px",
+  }),
 };
 
 interface ModalNewEventProps {
@@ -87,6 +90,9 @@ export const ModalNewEvent: React.FC<ModalNewEventProps> = ({ posModal }) => {
 
   const dispatch = useAppDispatch();
   const eventTemp = useAppSelector((state) => state.diarys.eventTemp);
+  const canSaveEventTemp = useAppSelector(
+    (state) => state.diarys.canSaveEventTemp
+  );
 
   const handleClickQuitModal: EventListener = React.useCallback((e) => {
     e.preventDefault();
@@ -269,12 +275,25 @@ export const ModalNewEvent: React.FC<ModalNewEventProps> = ({ posModal }) => {
         >
           <ToggleModalEvent />
           <div css={modalNewEventCss.buttonContenair}>
+            {canSaveEventTemp ? (
+              <p
+                css={[
+                  modalNewEventCss.textError,
+                  {
+                    color: theme.google.error,
+                  },
+                ]}
+              >
+                l'horaire choisit n'est pas disponible
+              </p>
+            ) : null}
             <Button
               variant="contained"
               sx={{
                 textTransform: "none",
               }}
               onClick={handleSave}
+              disabled={canSaveEventTemp}
             >
               Enregistrer
             </Button>

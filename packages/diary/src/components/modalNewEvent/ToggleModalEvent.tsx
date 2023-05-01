@@ -1,6 +1,9 @@
 import * as React from "react";
 import { Divider, SxProps, TextField, ToggleButton } from "@mui/material";
-import { modifEventTempDiary } from "../../store/slices/diarysSlice";
+import {
+  changeTagModalNewEvent,
+  modifEventTempDiary,
+} from "../../store/slices/diarysSlice";
 import { ListEvent } from "../../types";
 import {
   useAppDispatch,
@@ -51,16 +54,7 @@ export const ToggleModalEvent: React.FC = () => {
   const dispatch = useAppDispatch();
   const typeEvent = useAppSelector((state) => state.options.typeEvent);
   const listServices = useAppSelector((state) => state.general.listServices);
-
-  const [alignment, setAlignement] = React.useState<ListEvent>(
-    typeEvent.event
-      ? "event"
-      : typeEvent.service
-      ? "service"
-      : typeEvent.appointment
-      ? "appointment"
-      : "meeting"
-  );
+  const tag = useAppSelector((state) => state.diarys.tagModalNewEvent);
 
   const {
     control,
@@ -70,15 +64,29 @@ export const ToggleModalEvent: React.FC = () => {
     mode: "onBlur",
   });
 
+  React.useEffect(() => {
+    return () => {
+      if (typeEvent.event) {
+        dispatch(changeTagModalNewEvent("event"));
+      } else if (typeEvent.service) {
+        dispatch(changeTagModalNewEvent("service"));
+      } else if (typeEvent.appointment) {
+        dispatch(changeTagModalNewEvent("appointment"));
+      } else {
+        dispatch(changeTagModalNewEvent("meeting"));
+      }
+    };
+  }, []);
+
   const handleChangeToggleButton = React.useCallback(
-    (event: React.MouseEvent<HTMLElement>, newAlignment: ListEvent) => {
+    (event: React.MouseEvent<HTMLElement>, newtag: ListEvent) => {
       dispatch(
         modifEventTempDiary({
           keys: ["type"],
-          values: [newAlignment],
+          values: [newtag],
         })
       );
-      setAlignement(newAlignment);
+      dispatch(changeTagModalNewEvent(newtag));
     },
     []
   );
@@ -89,7 +97,7 @@ export const ToggleModalEvent: React.FC = () => {
         {typeEvent.event && (
           <ToggleButton
             value="event"
-            selected={alignment === "event"}
+            selected={tag === "event"}
             onChange={handleChangeToggleButton}
             sx={styleButtonToggle}
           >
@@ -101,7 +109,7 @@ export const ToggleModalEvent: React.FC = () => {
             onChange={handleChangeToggleButton}
             value="service"
             sx={styleButtonToggle}
-            selected={alignment === "service"}
+            selected={tag === "service"}
           >
             Prestation
           </ToggleButton>
@@ -109,7 +117,7 @@ export const ToggleModalEvent: React.FC = () => {
         {typeEvent.appointment && (
           <ToggleButton
             onChange={handleChangeToggleButton}
-            selected={alignment === "appointment"}
+            selected={tag === "appointment"}
             value="appointment"
             sx={styleButtonToggle}
           >
@@ -121,14 +129,14 @@ export const ToggleModalEvent: React.FC = () => {
             onChange={handleChangeToggleButton}
             value="meeting"
             sx={styleButtonToggle}
-            selected={alignment === "meeting"}
+            selected={tag === "meeting"}
           >
             Réunion
           </ToggleButton>
         )}
       </div>
       <Divider sx={{ width: "50%" }} />
-      {alignment != "service" ? (
+      {tag != "service" ? (
         <Controller
           name="titleEvent"
           control={control}
@@ -156,13 +164,13 @@ export const ToggleModalEvent: React.FC = () => {
         />
       ) : null}
       <Divider sx={{ width: "50%" }} />
-      {alignment === "event" ? (
+      {tag === "event" ? (
         <EventData />
-      ) : alignment === "service" ? (
+      ) : tag === "service" ? (
         <ServiceData />
-      ) : alignment === "appointment" ? (
+      ) : tag === "appointment" ? (
         <ApointmentData />
-      ) : alignment === "meeting" ? (
+      ) : tag === "meeting" ? (
         <MeetingData />
       ) : null}
     </div>

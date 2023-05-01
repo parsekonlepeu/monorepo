@@ -360,7 +360,7 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
             )?.color;
             return (
               <EventAllDay
-                key={indexEventsRow.toString()}
+                key={event.id.toString()}
                 colorDiary={colorDiary ? colorDiary : "fff"}
                 widthColumn={widthColumn}
                 numbersOfDay={numbersOfDay}
@@ -420,7 +420,7 @@ export const DaysView: React.FC<DayViewProps> = ({ numbersOfDay }) => {
             )?.color;
             return (
               <EventDay
-                key={event.id}
+                key={event.id + event.numberParts}
                 widthColumn={widthColumn}
                 numberParts={event.numberParts}
                 numbersOfDay={numbersOfDay}

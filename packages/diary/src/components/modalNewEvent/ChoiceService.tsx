@@ -50,7 +50,6 @@ export const ChoiceService: React.FC = () => {
     );
   }, []);
   const handleOnChoiceCategorie = React.useCallback((choice: ItemCategory) => {
-    console.log(choice);
     setCategorie(choice.name);
     const newIndexChoicesService = listServices.findIndex(
       (item) => item.category === choice.name

@@ -11,6 +11,7 @@ export const getListTime = () => {
     listReturn.push({
       time12: time12,
       time24: time24,
+      dateObject: dt.toObject(),
     });
   }
   return listReturn;

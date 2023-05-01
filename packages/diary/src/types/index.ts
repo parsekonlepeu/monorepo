@@ -46,6 +46,8 @@ export interface GeneralState {
   leftExtend: boolean;
 }
 
+export type TagModalNewEvent = "event" | "service" | "appointment" | "meeting";
+
 export type DiarysState = {
   flowChangeEvent: string | null;
   flowChangeEventAllDay: string | null;
@@ -53,12 +55,14 @@ export type DiarysState = {
   diarysDisplay: IdDiary[];
   diarys: Diary[];
   eventTemp?: EventDiary;
+  canSaveEventTemp: boolean;
   eventWeekOnChange: EventDiary | null;
   flowMoveModalEvent: boolean;
   modalUnsubscribeDiary: boolean;
   idDiaryForDelete: string | null;
   modalChoiceColor: boolean;
   idDiarysModalChoiceColor: string;
+  tagModalNewEvent: TagModalNewEvent;
   modalNewEvent: boolean;
   modalWarningNotDiarys: boolean;
   modalNewEventIsInAnchor: boolean;
@@ -353,6 +357,7 @@ export type PosModal = {
 export type TimeType = {
   time12: string;
   time24: string;
+  dateObject: ToObjectOutput;
 };
 
 export type ListTime = TimeType[];
